@@ -1,37 +1,30 @@
 import Head from "next/head";
-import {Header} from "@/app/component/Header/Header";
-import {Footer} from "@/app/component/Footer/Footer";
+import { Header } from "@/app/component/Header/Header";
+import { Footer } from "@/app/component/Footer/Footer";
+import "./globals.css";
 
-export default function RootLayout({ children, }: Readonly<{
-    children: React.ReactNode;
-}>) {
+// CSS dosyalarını doğru yolla import edin
+import "../../public/assets/css/app.css";
+import "../../public/assets/css/bootstrap.min.css";
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+
     return (
         <html lang="tr">
-        <Head>
-            {/* Bootstrap ve kendi CSS dosyalarını doğru şekilde dahil ediyoruz */}
-            <link rel="stylesheet" href="/assets/css/app.css"/>
-            <link rel="stylesheet" href="/assets/css/bootstrap.min.css"/>
-            <style>
-                {`
-            :root {
-              --te-link-color: #333;
-              --te-link-hover-color: #000;
-              --te-font: "Gibson";
-              --te-secondary-font: "Gibson";
-              --te-h1-font-size: 60px;
-              --te-color: #e30813;
-              --te-hover-color: #bd0f18;
-            }
-          `}
-            </style>
-        </Head>
-        <body>
-        <Header/>
+        <body className="d-flex flex-column min-vh-100">
+        <Header />
         {children}
-        <Footer/>
-        {/* jQuery'yi doğru şekilde dahil ediyoruz */}
-        <script src="/assets/js/jquery.min.js"></script>
-        <script src="/assets/js/theme.js"></script>
+        <Footer />
+
+        {/* Script dosyalarını doğru yolla ekleyin */}
+
+        <script async src="/assets/js/custom.js"></script>
+        <script async src="/assets/js/jquery.min.js"></script>
+        {/*<script async src="/assets/js/infinite-scroll.min.js"></script>*/}
+        {/*<script async src="/assets/js/app.min.js"></script>*/}
+        <script async src="/assets/js/moment.js"></script>
+        <script async src="/assets/js/menu.min.js"></script>
+        {/*<script async src="/assets/js/theme.js"></script>*/}
         </body>
         </html>
     );
