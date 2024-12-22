@@ -7,3 +7,10 @@
     --te-color: #e30813;
     --te-hover-color: #bd0f18;
 }
+body, html {
+    background-color: var(--bs-gray-200) !important;
+}
+a:link, a:visited {
+    text-decoration: none;
+
+}

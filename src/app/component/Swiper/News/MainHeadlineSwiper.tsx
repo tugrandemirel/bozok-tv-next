@@ -1,14 +1,16 @@
 "use client"
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
+
 import Image from "next/image";
 import Link from "next/link";
 import {useEffect} from "react";
 
-export default function MainHeadlineNews() {
+export default function MainHeadlineSwiper() {
 
     useEffect(() => {
 
@@ -34,19 +36,23 @@ export default function MainHeadlineNews() {
     return (
         <div className="swiper main-headline">
             <Swiper
-                modules={[Pagination, Navigation]}
+                modules={[Pagination, Navigation, Autoplay]}
                 spaceBetween={50}
                 slidesPerView={1}
                 navigation={false}
                 pagination={{
-                    el: ".swiper-pagination",
-                    clickable: true,
+                    el: ".main-headline-12 .swiper-pagination",
+                    clickable: !0,
+                }}
+                autoplay={{
+                    delay: 3000, // 3 saniye (3000 ms)
+                    disableOnInteraction: false, // Kullanıcı kaydırdığında autoplay durmaz
                 }}
 
             >
                 {newsData && newsData.map((news) => (
                     <SwiperSlide key={news.id}>
-                        <a
+                        <Link
                             href={news?.link ?? ''}
                             className="bg-dark"
                             title={news.title}
@@ -72,13 +78,12 @@ export default function MainHeadlineNews() {
                                     {news.title}
                                 </h3>
                             </div>
-                        </a>
+                        </Link>
                     </SwiperSlide>
                 ))}
             </Swiper>
             <div className="d-flex justify-content-between">
                 <div className="swiper-pagination swiper-pagination-flex position-static w-100 bg-light-gray" ></div>
-
                 <a className="sw-pagination-all" href="">
                     T
                 </a>

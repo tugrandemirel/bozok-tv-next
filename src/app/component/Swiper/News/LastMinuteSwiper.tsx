@@ -1,5 +1,5 @@
 "use client";
-import {Navigation} from 'swiper/modules';
+import {Autoplay, Navigation, Pagination} from 'swiper/modules';
 import Link from "next/link";
 import {Swiper, SwiperSlide} from 'swiper/react';
 
@@ -7,11 +7,10 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-export default function LastMinuteNews() {
+export default function LastMinuteSwiper() {
     const newsData = [
         {title: 'Yozgat’taki otobüs için İstanbul’dan geldi2', time: '15:04'},
         {title: 'Yozgat’tan Atatürk Yoluna Çözüm Çığlığı!', time: '12:06'},
-        // Diğer haber verilerini buraya ekleyebilirsiniz
     ];
 
     return (
@@ -19,7 +18,7 @@ export default function LastMinuteNews() {
             <div className="flex-grow-1 swiper last-minute-v ms-lg-3">
                 <Swiper
                     rewind={true}
-                    modules={[Navigation]}
+                    modules={[Navigation, Autoplay, Pagination]}
                     spaceBetween={50}
                     slidesPerView={1}
                     navigation={{
@@ -29,6 +28,10 @@ export default function LastMinuteNews() {
                     pagination={{
                         el: '.swiper-pagination',
                         type: 'bullets',
+                    }}
+                    autoplay={{
+                        delay: 3000, // 3 saniye (3000 ms)
+                        disableOnInteraction: false, // Kullanıcı kaydırdığında autoplay durmaz
                     }}
                 >
                     {newsData && newsData.map((news, index) => (

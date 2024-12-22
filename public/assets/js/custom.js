@@ -1,38 +1,33 @@
-document.addEventListener('DOMContentLoaded', function () {
-    let menuElement = document.querySelector('#mobile-menu');
-    let menuTriggers = document.querySelectorAll('a[href="#menu"]');
-    let menuClose = document.querySelector('#mobile-menu #menu_close');
+$(document).ready(function () {
+    var menuElement = $('#mobile-menu');
+    var menuTriggers = $('#menu');
+    var menuClose = $('#mobile-menu #menu_close');
 
-    let locale = "tr";
-    let menuTitle = (locale === 'tr') ? 'MENÜ' : 'MENU';
+    var locale = "tr";
+    var menuTitle = (locale === 'tr') ? 'MENÜ' : 'MENU';
 
-    if (menuElement && menuTriggers.length > 0 && menuClose) {
-        let menu = new MmenuLight(menuElement, 'all');
-        let navigator = menu.navigation({
+    if (menuElement.length > 0 && menuTriggers.length > 0 && menuClose.length > 0) {
+        var menu = new MmenuLight(menuElement[0], 'all');
+        var navigator = menu.navigation({
             slidingSubmenus: true,
             title: menuTitle
         });
-        let drawer = menu.offcanvas({
+        var drawer = menu.offcanvas({
             position: 'left'
         });
 
-        // Menü aÃ§ma
-        menuTriggers.forEach(function (trigger) {
-            trigger.addEventListener('click', function (evnt) {
-                evnt.preventDefault();
+        // Menü açma
+        menuTriggers.each(function () {
+            $(this).on('click', function (event) {
+                event.preventDefault();
                 drawer.open();
             });
         });
 
         // Menü kapama
-        menuClose.addEventListener('click', function (event) {
+        menuClose.on('click', function (event) {
             event.preventDefault();
             drawer.close();
         });
     }
 });
-setInterval(function () {
-    location.reload();
-}, 80000);
-
-

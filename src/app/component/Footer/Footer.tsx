@@ -1,4 +1,3 @@
-import {MobileMenu} from "@/app/component/Header/MobileMenu";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -17,7 +16,7 @@ export const Footer = () => {
                                             title="Yozgat Haber, Yozgat'ın Güvenilir Haber Kaynağı - Bozok Tv"
                                             className="d-block mb-3"
                                         >
-                                            <img
+                                            <Image
                                                 src="/test/logo.png"
                                                 alt="Yozgat Haber, Yozgat'ın Güvenilir Haber Kaynağı - Bozok Tv"
                                                 width={261}
@@ -266,20 +265,20 @@ export const Footer = () => {
                                         </Link>
                                     </li>
                                     <li className="list-inline-item  ">
-                                        <a
-                                            href="kunye.html"
+                                        <Link
+                                            href="/"
                                             className="text-white list-inline-item"
                                             target="_self"
                                             title="Künye"
                                         >
                                             Künye
-                                        </a>
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
                             <div className="col-lg-4">
                                 <div className="text-white-50 text-center text-lg-end">
-                                    Haber Yazılımı:{" "}
+                                    Haber Yazılımı:
                                     <Link
                                         href={`tel:+905443380633`}
                                         target="_blank"
