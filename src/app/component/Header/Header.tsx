@@ -9,26 +9,19 @@ export const Header = () => {
             <header className="header-8">
                 <nav className="top-header navbar navbar-expand-lg navbar-dark bg-te-color py-1">
                     <div className="container">
-                        <a
+                        <Link
                             className="navbar-brand me-0"
-                            href="index.html"
+                            href="/"
                             title="Yozgat Haber, Yozgat'ın Güvenilir Haber Kaynağı - Yozgat Çamlık Gazetesi"
                         >
                             <img
-                                src="https://yozgatcamlikcom.teimg.com/yozgat-habertest-com/uploads/2024/10/camlik-logo-light.svg"
+                                src=""
                                 alt="Yozgat Haber, Yozgat'ın Güvenilir Haber Kaynağı - Yozgat Çamlık Gazetesi"
                                 width={214}
                                 height={40}
                                 className="light-mode img-fluid flow-logo"
                             />
-                            <img
-                                src="https://yozgatcamlikcom.teimg.com/yozgat-habertest-com/uploads/2024/10/camlik-logo-light.svg"
-                                alt="Yozgat Haber, Yozgat'ın Güvenilir Haber Kaynağı - Yozgat Çamlık Gazetesi"
-                                width={214}
-                                height={40}
-                                className="dark-mode img-fluid flow-logo d-none"
-                            />
-                        </a>
+                        </Link>
                         <div className="header-widgets d-lg-flex justify-content-end align-items-center d-none">
                             {/* HAVA DURUMU */}
                             <input
@@ -41,89 +34,9 @@ export const Header = () => {
                                     className="form-select bg-transparent border-0 text-white" defaultValue="yozgat"
                                     name="city"
                                 >
-                                    <option value="adana">Adana</option>
-                                    <option value="adiyaman">Adıyaman</option>
-                                    <option value="afyonkarahisar">Afyonkarahisar</option>
-                                    <option value="agri">Ağrı</option>
-                                    <option value="aksaray">Aksaray</option>
-                                    <option value="amasya">Amasya</option>
-                                    <option value="ankara">Ankara</option>
-                                    <option value="antalya">Antalya</option>
-                                    <option value="ardahan">Ardahan</option>
-                                    <option value="artvin">Artvin</option>
-                                    <option value="aydin">Aydın</option>
-                                    <option value="balikesir">Balıkesir</option>
-                                    <option value="bartin">Bartın</option>
-                                    <option value="batman">Batman</option>
-                                    <option value="bayburt">Bayburt</option>
-                                    <option value="bilecik">Bilecik</option>
-                                    <option value="bingol">Bingöl</option>
-                                    <option value="bitlis">Bitlis</option>
-                                    <option value="bolu">Bolu</option>
-                                    <option value="burdur">Burdur</option>
-                                    <option value="bursa">Bursa</option>
-                                    <option value="canakkale">Çanakkale</option>
-                                    <option value="cankiri">Çankırı</option>
-                                    <option value="corum">Çorum</option>
-                                    <option value="denizli">Denizli</option>
-                                    <option value="diyarbakir">Diyarbakır</option>
-                                    <option value="duzce">Düzce</option>
-                                    <option value="edirne">Edirne</option>
-                                    <option value="elazig">Elazığ</option>
-                                    <option value="erzincan">Erzincan</option>
-                                    <option value="erzurum">Erzurum</option>
-                                    <option value="eskisehir">Eskişehir</option>
-                                    <option value="gaziantep">Gaziantep</option>
-                                    <option value="giresun">Giresun</option>
-                                    <option value="gumushane">Gümüşhane</option>
-                                    <option value="hakkari">Hakkâri</option>
-                                    <option value="hatay">Hatay</option>
-                                    <option value="igdir">Iğdır</option>
-                                    <option value="isparta">Isparta</option>
-                                    <option value="istanbul">İstanbul</option>
-                                    <option value="izmir">İzmir</option>
-                                    <option value="kahramanmaras">Kahramanmaraş</option>
-                                    <option value="karabuk">Karabük</option>
-                                    <option value="karaman">Karaman</option>
-                                    <option value="kars">Kars</option>
-                                    <option value="kastamonu">Kastamonu</option>
-                                    <option value="kayseri">Kayseri</option>
-                                    <option value="kilis">Kilis</option>
-                                    <option value="kirikkale">Kırıkkale</option>
-                                    <option value="kirklareli">Kırklareli</option>
-                                    <option value="kirsehir">Kırşehir</option>
-                                    <option value="kocaeli">Kocaeli</option>
-                                    <option value="konya">Konya</option>
-                                    <option value="kutahya">Kütahya</option>
-                                    <option value="malatya">Malatya</option>
-                                    <option value="manisa">Manisa</option>
-                                    <option value="mardin">Mardin</option>
-                                    <option value="mersin">Mersin</option>
-                                    <option value="mugla">Muğla</option>
-                                    <option value="mus">Muş</option>
-                                    <option value="nevsehir">Nevşehir</option>
-                                    <option value="nigde">Niğde</option>
-                                    <option value="ordu">Ordu</option>
-                                    <option value="osmaniye">Osmaniye</option>
-                                    <option value="rize">Rize</option>
-                                    <option value="sakarya">Sakarya</option>
-                                    <option value="samsun">Samsun</option>
-                                    <option value="sanliurfa">Şanlıurfa</option>
-                                    <option value="siirt">Siirt</option>
-                                    <option value="sinop">Sinop</option>
-                                    <option value="sivas">Sivas</option>
-                                    <option value="sirnak">Şırnak</option>
-                                    <option value="tekirdag">Tekirdağ</option>
-                                    <option value="tokat">Tokat</option>
-                                    <option value="trabzon">Trabzon</option>
-                                    <option value="tunceli">Tunceli</option>
-                                    <option value="usak">Uşak</option>
-                                    <option value="van">Van</option>
-                                    <option value="yalova">Yalova</option>
                                     <option value="yozgat">
                                         Yozgat
                                     </option>
-                                    <option value="zonguldak">Zonguldak</option>
                                 </select>
                                 <div className="text-white text-end">
                                     {" "}
@@ -133,92 +46,13 @@ export const Header = () => {
                             <div className="weather-top weather-widget d-none d-lg-flex justify-content-between flex-column">
                                 <div className="weather">
                                     <select
-                                        className="form-select bg-transparent border-0 text-white" defaultValue="325361"
+                                        className="form-select bg-transparent border-0 text-white" defaultValue="296562"
                                         name="city"
                                     >
-                                        <option value={325361}>Adana</option>
-                                        <option value={325329}>Adıyaman</option>
-                                        <option value={325303}>Afyonkarahisar</option>
-                                        <option value={325163}>Ağrı</option>
-                                        <option value={324496}>Aksaray</option>
-                                        <option value={752014}>Amasya</option>
-                                        <option value={323786}>Ankara</option>
-                                        <option value={323776}>Antalya</option>
-                                        <option value={751952}>Ardahan</option>
-                                        <option value={751816}>Artvin</option>
-                                        <option value={322819}>Aydın</option>
-                                        <option value={322164}>Balıkesir</option>
-                                        <option value={862467}>Bartın</option>
-                                        <option value={321836}>Batman</option>
-                                        <option value={750938}>Bayburt</option>
-                                        <option value={750598}>Bilecik</option>
-                                        <option value={321082}>Bingöl</option>
-                                        <option value={321025}>Bitlis</option>
-                                        <option value={750516}>Bolu</option>
-                                        <option value={320390}>Burdur</option>
-                                        <option value={750269}>Bursa</option>
-                                        <option value={749780}>Çanakkale</option>
-                                        <option value={749747}>Çankırı</option>
-                                        <option value={748879}>Çorum</option>
-                                        <option value={317109}>Denizli</option>
-                                        <option value={316541}>Diyarbakır</option>
-                                        <option value={747764}>Düzce</option>
-                                        <option value={747711}>Edirne</option>
-                                        <option value={315807}>Elazığ</option>
-                                        <option value={315373}>Erzincan</option>
-                                        <option value={315367}>Erzurum</option>
-                                        <option value={315202}>Eskişehir</option>
-                                        <option value={314830}>Gaziantep</option>
-                                        <option value={746881}>Giresun</option>
-                                        <option value={746425}>Gümüşhane</option>
-                                        <option value={312888}>Hakkâri</option>
-                                        <option value={312394}>Hatay</option>
-                                        <option value={443184}>Iğdır</option>
-                                        <option value={311073}>Isparta</option>
-                                        <option value={745044}>İstanbul</option>
-                                        <option value={311044}>İzmir</option>
-                                        <option value={310859}>Kahramanmaraş</option>
-                                        <option value={744562}>Karabük</option>
-                                        <option value={309527}>Karaman</option>
-                                        <option value={743952}>Kars</option>
-                                        <option value={743882}>Kastamonu</option>
-                                        <option value={308464}>Kayseri</option>
-                                        <option value={307864}>Kilis</option>
-                                        <option value={307654}>Kırıkkale</option>
-                                        <option value={743166}>Kırklareli</option>
-                                        <option value={307515}>Kırşehir</option>
-                                        <option value={742865}>Kocaeli</option>
-                                        <option value={306571}>Konya</option>
-                                        <option value={305268}>Kütahya</option>
-                                        <option value={304922}>Malatya</option>
-                                        <option value={304827}>Manisa</option>
-                                        <option value={304797}>Mardin</option>
-                                        <option value={311728}>Mersin</option>
-                                        <option value={304184}>Muğla</option>
-                                        <option value={304081}>Muş</option>
-                                        <option value={303831}>Nevşehir</option>
-                                        <option value={303827}>Niğde</option>
-                                        <option value={741100}>Ordu</option>
-                                        <option value={303195}>Osmaniye</option>
-                                        <option value={740483}>Rize</option>
-                                        <option value={740352}>Sakarya</option>
-                                        <option value={740264}>Samsun</option>
-                                        <option value={298333}>Şanlıurfa</option>
-                                        <option value={300822}>Siirt</option>
-                                        <option value={739600}>Sinop</option>
-                                        <option value={300619}>Sivas</option>
-                                        <option value={300640}>Şırnak</option>
-                                        <option value={738926}>Tekirdağ</option>
-                                        <option value={738743}>Tokat</option>
-                                        <option value={738648}>Trabzon</option>
-                                        <option value={298846}>Tunceli</option>
-                                        <option value={298299}>Uşak</option>
-                                        <option value={298113}>Van</option>
-                                        <option value={738025}>Yalova</option>
+
                                         <option value={296562}>
                                             Yozgat
                                         </option>
-                                        <option value={737022}>Zonguldak</option>
                                     </select>
                                 </div>
                                 <div className="weather-degree text-light text-end">
@@ -285,85 +119,85 @@ export const Header = () => {
                                 </div>
                             </div>
                             {/* PİYASALAR */}
-                            <div className={0}>
-                                <a
-                                    href="foto-galeri.html"
+                            <div>
+                                <Link
+                                    href="/"
                                     className="text-center d-block mt-1 "
                                     target="_self"
                                     title="Foto Galeri"
                                 >
                                     <div className="small text-white lh-1">Foto Galeri</div>
                                     <i className="fa fa-camera me-1 text-warning" />{" "}
-                                </a>
+                                </Link>
                             </div>
-                            <div className={1}>
-                                <a
-                                    href="video.html"
+                            <div>
+                                <Link
+                                    href="/"
                                     className="text-center d-block mt-1 "
                                     target="_self"
                                     title="Çamlık TV"
                                 >
                                     <div className="small text-white lh-1">Çamlık TV</div>
                                     <i className="fa fa-video me-1 text-warning" />{" "}
-                                </a>
+                                </Link>
                             </div>
-                            <div className={2}>
-                                <a
-                                    href="yazarlar.html"
+                            <div >
+                                <Link
+                                    href="/"
                                     className="text-center d-block mt-1 "
                                     target="_self"
                                     title="Yazarlar"
                                 >
                                     <div className="small text-white lh-1">Yazarlar</div>
                                     <i className="fa fa-pen-nib me-1 text-warning" />{" "}
-                                </a>
+                                </Link>
                             </div>
                             <div className="top-social-media">
-                                <a
-                                    href="https://www.facebook.com/camlikgazetesi"
+                                <Link
+                                    href="/"
                                     className="ms-2"
                                     target="_blank"
                                 >
                                     <i className="fab fa-facebook-f text-white" />
-                                </a>
-                                <a
-                                    href="https://www.twitter.com/camlikgazetesi"
+                                </Link>
+                                <Link
+                                    href="/"
                                     className="ms-2"
                                     target="_blank"
                                 >
                                     <i className="fab fa-x-twitter text-white" />
-                                </a>
-                                <a
-                                    href="https://www.instagram.com/camlikmedyagrubuu"
+                                </Link>
+                                <Link
+                                    href="/"
                                     className="ms-2"
                                     target="_blank"
                                 >
                                     <i className="fab fa-instagram text-white" />
-                                </a>
-                                <a
-                                    href="https://www.youtube.com/yozgatçamlıktv"
+                                </Link>
+                                <Link
+                                    href="/"
                                     className="ms-2"
                                     target="_blank"
                                 >
                                     <i className="fab fa-youtube text-white" />
-                                </a>
+                                </Link>
                             </div>
                             <div className="search-top">
-                                <a href="arama.html" className="d-block" title="Ara">
+                                <Link href="/" className="d-block" title="Ara">
                                     <i className="fa fa-search text-white" />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                         <ul className="nav d-lg-none px-2">
                             <li className="nav-item">
-                                <a href="arama.html" className="me-2 text-white" title="Ara">
+                                <Link href="/" className="me-2 text-white" title="Ara">
                                     <i className="fa fa-search fa-lg" />
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <a href="#menu" title="Ana Menü" className="text-white">
+                                <Link href="#menu" title="Ana Menü" className="text-white">
                                     <i className="fa fa-bars fa-lg" />
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -372,119 +206,119 @@ export const Header = () => {
                     <div className="container">
                         <ul className="nav fw-semibold">
                             <li className="nav-item   ">
-                                <a
-                                    href="asayis.html"
+                                <Link
+                                    href="/"
                                     className="nav-link nav-link text-dark"
                                     target="_self"
                                     title="Asayiş"
                                 >
                                     Asayiş
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item   ">
-                                <a
-                                    href="dunya.html"
+                                <Link
+                                    href="/"
                                     className="nav-link nav-link text-dark"
                                     target="_self"
                                     title="Dünya"
                                 >
                                     Dünya
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item   ">
-                                <a
-                                    href="egitim.html"
+                                <Link
+                                    href="/"
                                     className="nav-link nav-link text-dark"
                                     target="_self"
                                     title="Eğitim"
                                 >
                                     Eğitim
-                                </a>
+                                </Link>
                             </li>
-                            <li className="nav-item   ">
-                                <a
-                                    href="ekonomi.html"
+                            <li className="nav-item">
+                                <Link
+                                    href="/"
                                     className="nav-link nav-link text-dark"
                                     target="_self"
                                     title="Ekonomi"
                                 >
                                     Ekonomi
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item   ">
-                                <a
-                                    href="gundem.html"
+                                <Link
+                                    href="/"
                                     className="nav-link nav-link text-dark"
                                     target="_self"
                                     title="Gündem"
                                 >
                                     Gündem
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item   ">
-                                <a
-                                    href="resmi-ilanlar.html"
+                                <Link
+                                    href="/"
                                     className="nav-link nav-link text-dark"
                                     target="_self"
                                     title="Resmi İlanlar"
                                 >
                                     Resmi İlanlar
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item   ">
-                                <a
-                                    href="saglik.html"
+                                <Link
+                                    href="/"
                                     className="nav-link nav-link text-dark"
                                     target="_self"
                                     title="Sağlık"
                                 >
                                     Sağlık
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item   ">
-                                <a
-                                    href="siyaset.html"
+                                <Link
+                                    href="/"
                                     className="nav-link nav-link text-dark"
                                     target="_self"
                                     title="Siyaset"
                                 >
                                     Siyaset
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item   ">
-                                <a
-                                    href="spor.html"
+                                <Link
+                                    href="/"
                                     className="nav-link nav-link text-dark"
                                     target="_self"
                                     title="Spor"
                                 >
                                     Spor
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item   ">
-                                <a
-                                    href="teknoloji.html"
+                                <Link
+                                    href="/"
                                     className="nav-link nav-link text-dark"
                                     target="_self"
                                     title="Teknoloji"
                                 >
                                     Teknoloji
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item   ">
-                                <a
-                                    href="yasam.html"
+                                <Link
+                                    href="/"
                                     className="nav-link nav-link text-dark"
                                     target="_self"
                                     title="Yaşam"
                                 >
                                     Yaşam
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                         <ul className="navigation-menu nav d-flex align-items-center">
                             <li className="nav-item dropdown">
-                                <a
+                                <Link
                                     className="nav-link pe-0 text-dark"
                                     data-bs-toggle="dropdown"
                                     href="#"
@@ -493,284 +327,284 @@ export const Header = () => {
                                     title="Ana Menü"
                                 >
                                     <i className="fa fa-bars fa-lg" />
-                                </a>
+                                </Link>
                                 <div className="mega-menu dropdown-menu dropdown-menu-end text-capitalize shadow-lg border-0 rounded-0">
                                     <div className="row g-3 small p-3">
                                         <div className="col">
                                             <div className="extra-sections bg-light p-3 border">
-                                                <a
-                                                    href="yozgat-nobetci-eczaneler.html"
+                                                <Link
+                                                    href="/"
                                                     title="Yozgat Nöbetçi Eczaneler"
                                                     className="d-block border-bottom pb-2 mb-2"
                                                     target="_self"
                                                 >
                                                     <i className="fa-solid fa-capsules me-2" />
                                                     Yozgat Nöbetçi Eczaneler
-                                                </a>
-                                                <a
-                                                    href="yozgat-hava-durumu.html"
+                                                </Link>
+                                                <Link
+                                                    href="/"
                                                     title="Yozgat Hava Durumu"
                                                     className="d-block border-bottom pb-2 mb-2"
                                                     target="_self"
                                                 >
                                                     <i className="fa-solid fa-cloud-sun me-2" />
                                                     Yozgat Hava Durumu
-                                                </a>
-                                                <a
-                                                    href="yozgat-namaz-vakitleri.html"
+                                                </Link>
+                                                <Link
+                                                    href="/"
                                                     title="Yozgat Namaz Vakitleri"
                                                     className="d-block border-bottom pb-2 mb-2"
                                                     target="_self"
                                                 >
                                                     <i className="fa-solid fa-mosque me-2" />
                                                     Yozgat Namaz Vakitleri
-                                                </a>
-                                                <a
-                                                    href="yozgat-trafik-durumu.html"
+                                                </Link>
+                                                <Link
+                                                    href="/"
                                                     title="Yozgat Trafik Yoğunluk Haritası"
                                                     className="d-block border-bottom pb-2 mb-2"
                                                     target="_self"
                                                 >
                                                     <i className="fa-solid fa-car me-2" />
                                                     Yozgat Trafik Yoğunluk Haritası
-                                                </a>
-                                                <a
-                                                    href="puan-durumu.html"
+                                                </Link>
+                                                <Link
+                                                    href="/"
                                                     title="Puan Durumu"
                                                     className="d-block border-bottom pb-2 mb-2"
                                                     target="_self"
                                                 >
                                                     <i className="fa-solid fa-chart-bar me-2" />
                                                     Puan Durumu
-                                                </a>
-                                                <a
-                                                    href="tum-mansetler.html"
+                                                </Link>
+                                                <Link
+                                                    href="/"
                                                     title="Tüm Manşetler"
                                                     className="d-block border-bottom pb-2 mb-2"
                                                     target="_self"
                                                 >
                                                     <i className="fa-solid fa-newspaper me-2" />
                                                     Tüm Manşetler
-                                                </a>
-                                                <a
-                                                    href="sondakika-haberleri.html"
+                                                </Link>
+                                                <Link
+                                                    href="/"
                                                     title="Son Dakika Haberleri"
                                                     className="d-block pb-2 me-2"
                                                     target="_self"
                                                 >
                                                     <i className="fa-solid fa-bell me-2" />
                                                     Son Dakika Haberleri
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                         <div className="col">
-                                            <a
-                                                href="asayis.html"
+                                            <Link
+                                                href="/"
                                                 className="d-block border-bottom  pb-2 mb-2"
                                                 target="_self"
                                                 title="Asayiş"
                                             >
                                                 Asayiş
-                                            </a>
-                                            <a
-                                                href="dunya.html"
+                                            </Link>
+                                            <Link
+                                                href="/"
                                                 className="d-block border-bottom  pb-2 mb-2"
                                                 target="_self"
                                                 title="Dünya"
                                             >
                                                 Dünya
-                                            </a>
-                                            <a
-                                                href="egitim.html"
+                                            </Link>
+                                            <Link
+                                                href="/"
                                                 className="d-block border-bottom  pb-2 mb-2"
                                                 target="_self"
                                                 title="Eğitim"
                                             >
                                                 Eğitim
-                                            </a>
-                                            <a
-                                                href="ekonomi.html"
+                                            </Link>
+                                            <Link
+                                                href="/"
                                                 className="d-block border-bottom  pb-2 mb-2"
                                                 target="_self"
                                                 title="Ekonomi"
                                             >
                                                 Ekonomi
-                                            </a>
-                                            <a
-                                                href="gundem.html"
+                                            </Link>
+                                            <Link
+                                                href="/"
                                                 className="d-block border-bottom  pb-2 mb-2"
                                                 target="_self"
                                                 title="Gündem"
                                             >
                                                 Gündem
-                                            </a>
-                                            <a
-                                                href="haber.html"
+                                            </Link>
+                                            <Link
+                                                href="/"
                                                 className="d-block border-bottom  pb-2 mb-2"
                                                 target="_self"
                                                 title="Haber"
                                             >
                                                 Haber
-                                            </a>
-                                            <a
-                                                href="haber-reklam.html"
+                                            </Link>
+                                            <Link
+                                                href="/"
                                                 className="d-block  pb-2 mb-2"
                                                 target="_self"
                                                 title="Haber Reklam"
                                             >
                                                 Haber Reklam
-                                            </a>
+                                            </Link>
                                         </div>
                                         <div className="col">
-                                            <a
-                                                href="is-ilanlari.html"
+                                            <Link
+                                                href="/"
                                                 className="d-block border-bottom  pb-2 mb-2"
                                                 target="_self"
                                                 title="İş İlanları"
                                             >
                                                 İş İlanları
-                                            </a>
-                                            <a
-                                                href="kultur-sanat.html"
+                                            </Link>
+                                            <Link
+                                                href="/"
                                                 className="d-block border-bottom  pb-2 mb-2"
                                                 target="_self"
                                                 title="Kültür-Sanat"
                                             >
                                                 Kültür-Sanat
-                                            </a>
-                                            <a
-                                                href="magazin.html"
+                                            </Link>
+                                            <Link
+                                                href="/"
                                                 className="d-block border-bottom  pb-2 mb-2"
                                                 target="_self"
                                                 title="Magazin"
                                             >
                                                 Magazin
-                                            </a>
-                                            <a
-                                                href="saglik.html"
+                                            </Link>
+                                            <Link
+                                                href="/"
                                                 className="d-block border-bottom  pb-2 mb-2"
                                                 target="_self"
                                                 title="Sağlık"
                                             >
                                                 Sağlık
-                                            </a>
-                                            <a
-                                                href="siyaset.html"
+                                            </Link>
+                                            <Link
+                                                href="/"
                                                 className="d-block border-bottom  pb-2 mb-2"
                                                 target="_self"
                                                 title="Siyaset"
                                             >
                                                 Siyaset
-                                            </a>
-                                            <a
-                                                href="spor.html"
+                                            </Link>
+                                            <Link
+                                                href="/"
                                                 className="d-block border-bottom  pb-2 mb-2"
                                                 target="_self"
                                                 title="Spor"
                                             >
                                                 Spor
-                                            </a>
-                                            <a
-                                                href="teknoloji.html"
+                                            </Link>
+                                            <Link
+                                                href="/"
                                                 className="d-block  pb-2 mb-2"
                                                 target="_self"
                                                 title="Teknoloji"
                                             >
                                                 Teknoloji
-                                            </a>
+                                            </Link>
                                         </div>
                                         <div className="col">
-                                            <a
-                                                href="yasam.html"
+                                            <Link
+                                                href="/"
                                                 className="d-block border-bottom  pb-2 mb-2"
                                                 target="_self"
                                                 title="Yaşam"
                                             >
                                                 Yaşam
-                                            </a>
+                                            </Link>
                                         </div>
                                     </div>
                                     <div className="p-3 bg-light">
-                                        <a
+                                        <Link
                                             className="me-3"
-                                            href="https://www.facebook.com/camlikgazetesi"
+                                            href="/"
                                             target="_blank"
                                         >
                                             <i className="fab fa-facebook me-2 text-navy" /> Facebook
-                                        </a>
-                                        <a
+                                        </Link>
+                                        <Link
                                             className="me-3"
-                                            href="https://www.twitter.com/camlikgazetesi"
+                                            href="/"
                                             target="_blank"
                                         >
                                             <i className="fab fa-x-twitter " /> Twitter
-                                        </a>
-                                        <a
+                                        </Link>
+                                        <Link
                                             className="me-3"
-                                            href="https://www.instagram.com/camlikmedyagrubuu"
+                                            href="/"
                                             target="_blank"
                                         >
                                             <i className="fab fa-instagram me-2 text-magenta" /> Instagram
-                                        </a>
-                                        <a
+                                        </Link>
+                                        <Link
                                             className="me-3"
-                                            href="https://www.youtube.com/yozgatçamlıktv"
+                                            href="/"
                                             target="_blank"
                                         >
                                             <i className="fab fa-youtube me-2 text-danger" /> Youtube
-                                        </a>
-                                        <a
+                                        </Link>
+                                        <Link
                                             className="me-3"
-                                            href="https://www.tiktok.com/yozgatçamlıktv"
+                                            href="/"
                                             target="_blank"
                                         >
                                             <i className="fa-brands fa-tiktok me-1 text-dark" /> Tiktok
-                                        </a>
-                                        <a
+                                        </Link>
+                                        <Link
                                             className="me-3"
-                                            href="https://www.threads.com/yozgatçamlıktv"
+                                            href="/"
                                             target="_blank"
                                         >
                                             <i className="fa-brands fa-threads me-1 text-dark" /> Threads
-                                        </a>
-                                        <a
+                                        </Link>
+                                        <Link
                                             className=""
-                                            href="https://api.whatsapp.com/send?phone=05056105829"
+                                            href="/"
                                             title="Whatsapp"
                                         >
                                             <i className="fab fa-whatsapp me-2 text-navy" /> WhatsApp İhbar
                                             Hattı
-                                        </a>{" "}
+                                        </Link>{" "}
                                     </div>
                                     <div className="mega-menu-footer p-2 bg-te-color">
-                                        <a
+                                        <Link
                                             className="dropdown-item text-white"
-                                            href="kunye.html"
+                                            href="/"
                                             title="Künye / İletişim"
                                         >
                                             <i className="fa fa-id-card me-2" /> Künye / İletişim
-                                        </a>
-                                        <a
+                                        </Link>
+                                        <Link
                                             className="dropdown-item text-white"
-                                            href="iletisim.html"
+                                            href="/"
                                             title="Bize Ulaşın"
                                         >
                                             <i className="fa fa-envelope me-2" /> Bize Ulaşın
-                                        </a>
-                                        <a
+                                        </Link>
+                                        <Link
                                             className="dropdown-item text-white"
-                                            href="rss-baglantilari.html"
+                                            href="/"
                                             title="RSS Bağlantıları"
                                         >
                                             <i className="fa fa-rss me-2" /> RSS Bağlantıları
-                                        </a>
-                                        <a
+                                        </Link>
+                                        <Link
                                             className="dropdown-item text-white"
-                                            href="member/login.html"
+                                            href="/"
                                             title="Üyelik Girişi"
                                         >
                                             <i className="fa fa-user me-2" /> Üyelik Girişi
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </li>
@@ -779,79 +613,79 @@ export const Header = () => {
                 </div>
                 <ul className="mobile-categories d-lg-none list-inline bg-white">
                     <li className="list-inline-item">
-                        <a href="asayis.html" className="text-dark" target="_self" title="Asayiş">
+                        <Link href="/" className="text-dark" target="_self" title="Asayiş">
                             Asayiş
-                        </a>
+                        </Link>
                     </li>
                     <li className="list-inline-item">
-                        <a href="dunya.html" className="text-dark" target="_self" title="Dünya">
+                        <Link href="/" className="text-dark" target="_self" title="Dünya">
                             Dünya
-                        </a>
+                        </Link>
                     </li>
                     <li className="list-inline-item">
-                        <a href="egitim.html" className="text-dark" target="_self" title="Eğitim">
+                        <Link href="/" className="text-dark" target="_self" title="Eğitim">
                             Eğitim
-                        </a>
+                        </Link>
                     </li>
                     <li className="list-inline-item">
-                        <a
-                            href="ekonomi.html"
+                        <Link
+                            href="/"
                             className="text-dark"
                             target="_self"
                             title="Ekonomi"
                         >
                             Ekonomi
-                        </a>
+                        </Link>
                     </li>
                     <li className="list-inline-item">
-                        <a href="gundem.html" className="text-dark" target="_self" title="Gündem">
+                        <Link href="/" className="text-dark" target="_self" title="Gündem">
                             Gündem
-                        </a>
+                        </Link>
                     </li>
                     <li className="list-inline-item">
-                        <a
-                            href="resmi-ilanlar.html"
+                        <Link
+                            href="/"
                             className="text-dark"
                             target="_self"
                             title="Resmi İlanlar"
                         >
                             Resmi İlanlar
-                        </a>
+                        </Link>
                     </li>
                     <li className="list-inline-item">
-                        <a href="saglik.html" className="text-dark" target="_self" title="Sağlık">
+                        <Link href="/" className="text-dark" target="_self" title="Sağlık">
                             Sağlık
-                        </a>
+                        </Link>
                     </li>
                     <li className="list-inline-item">
-                        <a
-                            href="siyaset.html"
+                        <Link
+                            href="/"
                             className="text-dark"
                             target="_self"
                             title="Siyaset"
                         >
                             Siyaset
-                        </a>
+                        </Link>
                     </li>
                     <li className="list-inline-item">
-                        <a href="spor.html" className="text-dark" target="_self" title="Spor">
+                        <Link href="/" className="text-dark" target="_self" title="Spor">
                             Spor
-                        </a>
+                        </Link>
                     </li>
                     <li className="list-inline-item">
-                        <a
-                            href="teknoloji.html"
+                        <Link
+                            href="/"
                             className="text-dark"
                             target="_self"
                             title="Teknoloji"
                         >
                             Teknoloji
-                        </a>
+                        </Link>
                     </li>
                     <li className="list-inline-item">
-                        <a href="yasam.html" className="text-dark" target="_self" title="Yaşam">
+                        <Link href="/" className="text-dark" target="_self" title="Yaşam">
                             Yaşam
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </header>
