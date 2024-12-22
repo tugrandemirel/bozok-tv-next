@@ -18,7 +18,7 @@ export const Footer = () => {
                                             className="d-block mb-3"
                                         >
                                             <img
-                                                src=""
+                                                src="/test/yozgat-20.jpg"
                                                 alt="Yozgat Haber, Yozgat'ın Güvenilir Haber Kaynağı - Bozok Tv"
                                                 width={261}
                                                 height={40}
@@ -26,10 +26,8 @@ export const Footer = () => {
                                             />
                                         </Link>
                                         <p className="text-white">
-                                            Bozok Yaylası'nın Sesi... Dünyadaki tüm Yozgatlılar'a hitap
-                                            eden, ayırmadan, ayrıştırmadan sadece Yozgat'tan, insanından
-                                            taraf yayıncılık ilkesine sahip bir medya organının adıdır:
-                                            www.yozgatcamlik.com
+                                           Yozgat'tan dünyaya açılan pencere:
+                                            Bozok.TV
                                         </p>
                                     </div>
                                 </div>

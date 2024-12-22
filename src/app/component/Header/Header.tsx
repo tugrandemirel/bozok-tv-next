@@ -15,7 +15,7 @@ export const Header = () => {
                             title="Yozgat Haber, Yozgat'ın Güvenilir Haber Kaynağı - Yozgat Çamlık Gazetesi"
                         >
                             <img
-                                src=""
+                                src="/test/yozgat-20.jpg"
                                 alt="Yozgat Haber, Yozgat'ın Güvenilir Haber Kaynağı - Yozgat Çamlık Gazetesi"
                                 width={214}
                                 height={40}

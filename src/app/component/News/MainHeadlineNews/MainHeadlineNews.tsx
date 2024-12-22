@@ -9,7 +9,7 @@ import Link from "next/link";
 import {useEffect} from "react";
 
 export default function MainHeadlineNews() {
-    // Log sayfa numarasını renderCustom dışında, useEffect içinde kontrol et
+
     useEffect(() => {
 
     }, []);
@@ -19,7 +19,7 @@ export default function MainHeadlineNews() {
             link: "",
             title: "Kahvaltıların Sündükçe Artan Lezzeti2!",
             category: "Yaşam",
-            imgSrc: "/yozgatcamlikcom.teimg.com/crop/860x504/yozgatcamlik-com/uploads/2024/12/yozgat-sundurme-3.html",
+            imgSrc: "/test/yozgat-20.jpg",
             imgAlt: "Kahvaltıların Sündükçe Artan Lezzeti!",
         },
         {
@@ -27,7 +27,7 @@ export default function MainHeadlineNews() {
             link: "",
             title: "Yozgatlılar Kazanacak4!",
             category: "Ekonomi",
-            imgSrc: "/yozgatcamlikcom.teimg.com/crop/860x504/yozgatcamlik-com/uploads/2024/12/kamanli-ceyrek-altin-3.html",
+            imgSrc: "/test/yozgat-20.jpg",
             imgAlt: "Yozgatlılar Kazanacak!",
         },
     ];
