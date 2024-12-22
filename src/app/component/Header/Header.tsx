@@ -12,11 +12,11 @@ export const Header = () => {
                         <Link
                             className="navbar-brand me-0"
                             href="/"
-                            title="Yozgat Haber, Yozgat'ın Güvenilir Haber Kaynağı - Yozgat Çamlık Gazetesi"
+                            title="Yozgat Haber, Yozgat'ın Güvenilir Haber Kaynağı - Bozok TV"
                         >
                             <img
                                 src="/test/logo.png"
-                                alt="Yozgat Haber, Yozgat'ın Güvenilir Haber Kaynağı - Yozgat Çamlık Gazetesi"
+                                alt="Yozgat Haber, Yozgat'ın Güvenilir Haber Kaynağı - Bozok TV"
                                 width={214}
                                 height={40}
                                 className="light-mode img-fluid flow-logo"
@@ -58,11 +58,11 @@ export const Header = () => {
                                 <div className="weather-degree text-light text-end">
                                     <i className="icon wi wi-cloudy text-warning me-2" />
                                     <span className="degree text-white">
-              10<sup>°</sup>C
-            </span>
+                                      10<sup>°</sup>C
+                                    </span>
                                 </div>
                             </div>
-                            <div data-location='{" city":"TUXX0014"}' className="d-none" />
+                            <div className="d-none" />
                             {/* PİYASALAR */}
                             <div
                                 className="parite-top position-relative overflow-hidden"
@@ -135,9 +135,9 @@ export const Header = () => {
                                     href="/"
                                     className="text-center d-block mt-1 "
                                     target="_self"
-                                    title="Çamlık TV"
+                                    title="Bozok TV"
                                 >
-                                    <div className="small text-white lh-1">Çamlık TV</div>
+                                    <div className="small text-white lh-1">Video Galeri</div>
                                     <i className="fa fa-video me-1 text-warning" />{" "}
                                 </Link>
                             </div>
