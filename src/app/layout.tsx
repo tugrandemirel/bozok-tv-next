@@ -17,10 +17,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             {children}
             <Footer />
             <MobileMenu />
-            <Script async src="/assets/js/jquery.min.js"/>
-            <Script async src="/assets/js/moment.js" />
-            <Script async src="/assets/js/menu.min.js" />
-            <Script async src="/assets/js/custom.js" />
+            <Script async src="/assets/js/jquery.min.js" strategy="beforeInteractive" />
+            <Script async src="/assets/js/moment.js" strategy="beforeInteractive" />
+            <Script async src="/assets/js/menu.min.js" strategy="afterInteractive" />
+            <Script async src="/assets/js/custom.js" strategy="lazyOnload" />
         </body>
         </html>
     );
