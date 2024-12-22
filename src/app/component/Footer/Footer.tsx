@@ -18,7 +18,7 @@ export const Footer = () => {
                                             className="d-block mb-3"
                                         >
                                             <img
-                                                src="/test/yozgat-20.jpg"
+                                                src="/test/logo.png"
                                                 alt="Yozgat Haber, Yozgat'ın Güvenilir Haber Kaynağı - Bozok Tv"
                                                 width={261}
                                                 height={40}
