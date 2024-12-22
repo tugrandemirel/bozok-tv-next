@@ -3,7 +3,6 @@ import { Header } from "@/app/component/Header/Header";
 import { Footer } from "@/app/component/Footer/Footer";
 import "./globals.css";
 
-// CSS dosyalarını doğru yolla import edin
 import "../../public/assets/css/app.css";
 import "../../public/assets/css/bootstrap.min.css";
 import {MobileMenu} from "@/app/component/Header/Menu/MobileMenu";
