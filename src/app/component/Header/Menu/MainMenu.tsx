@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import MegaMenu from "./MegaMenu";
-import {MobileCategories} from "@/app/component/Header/Menu/MobileCategories";
+import {MobileCategories} from "@/app/component/Header/MobileMenu/MobileCategories";
 
 const MainMenu = () => {
     const [isMegaMenuOpen, setMegaMenuOpen] = useState(false);

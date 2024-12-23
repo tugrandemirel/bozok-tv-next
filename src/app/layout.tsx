@@ -5,7 +5,7 @@ import "./globals.css";
 
 import "../../public/assets/css/app.css";
 import "../../public/assets/css/bootstrap.min.css";
-import {MobileMenu} from "@/app/component/Header/Menu/MobileMenu";
+import {MobileMenu} from "@/app/component/Header/MobileMenu/MobileMenu";
 import Script from "next/script";
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
