@@ -105,7 +105,6 @@ export const Header = () => {
                         </ul>
                     </div>
                 </nav>
-                
                 <MainMenu />
             </header>
 
