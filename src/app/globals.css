@@ -12,5 +12,9 @@ body, html {
 }
 a:link, a:visited {
     text-decoration: none;
+    color: var(--te-link-color);
+}
 
+a:hover {
+    color: var(--te-link-hover-color);
 }
