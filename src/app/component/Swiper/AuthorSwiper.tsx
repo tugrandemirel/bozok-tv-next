@@ -39,22 +39,22 @@ export default function AuthorSwiper() {
     return (
         <div className="swiper authors-swiper">
             <Swiper
-            spaceBetween={50}
-            slidesPerView={3}
-            breakpoints={{
-              0:{
-                slidesPerView:1
-              },
-              765:{
-                slidesPerView:2
-              },
-              1200: {
-                slidesPerView: 3
-              }
-            }}
-                modules={[Navigation, Pagination]}
-                navigation={false}
-                pagination={false}
+                spaceBetween={50}
+                slidesPerView={3}
+                breakpoints={{
+                    0:{
+                      slidesPerView:1
+                    },
+                    765:{
+                      slidesPerView:2
+                    },
+                    1200: {
+                      slidesPerView: 3
+                    }
+                  }}
+                      modules={[Navigation, Pagination]}
+                      navigation={false}
+                      pagination={false}
             >
                 {authorsData && authorsData.map((author) => (
                     <SwiperSlide key={author.id}>
