@@ -39,9 +39,36 @@ export default function AuthorSwiper() {
     return (
         <div className="swiper authors-swiper">
             <Swiper
+            spaceBetween={50}
+            slidesPerView={3}
+            breakpoints={{
+              0: {
+                slidesPerView: 1
+              },
+              400:{
+                slidesPerView:1
+              },
+              639: {
+                slidesPerView: 2
+              },
+              687: {
+                slidesPerView:2
+              },
+              865:{
+                slidesPerView:2
+              },
+              1000:{
+                slidesPerView:3
+              },
+              1500:{
+                slidesPerView:3
+              },
+              1700:{
+                slidesPerView:3
+              }
+            }}
+        
                 modules={[Navigation, Pagination]}
-                spaceBetween={50}
-                slidesPerView={3}
                 navigation={false}
                 pagination={false}
             >
