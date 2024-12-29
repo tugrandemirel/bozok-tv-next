@@ -21,14 +21,15 @@ export default function LastMinuteSwiper() {
                     modules={[Navigation, Autoplay, Pagination]}
                     spaceBetween={50}
                     slidesPerView={1}
+                    pagination={false}
                     navigation={{
                         nextEl: '.swiper-v-next',
                         prevEl: '.swiper-v-prev',
                     }}
-                    pagination={{
-                        el: '.swiper-pagination',
-                        type: 'bullets',
-                    }}
+                    // pagination={{
+                    //     el: '.swiper-pagination',
+                    //     type: 'bullets',
+                    // }}
                     autoplay={{
                         delay: 3000, // 3 saniye (3000 ms)
                         disableOnInteraction: false, // Kullanıcı kaydırdığında autoplay durmaz
