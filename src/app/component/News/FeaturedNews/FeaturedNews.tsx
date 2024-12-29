@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const FeaturedNews = () => {
 
-    let featuredNews = [
+    const featuredNews = [
         {
             link: '/',
             imgSrc: "/test/yozgat-20.jpg",
