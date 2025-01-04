@@ -1,6 +1,21 @@
+"use client"
 import Link from "next/link";
+import {useCategories} from "@/hooks/useCategories";
 
 export const MobileMenu = () => {
+    const { categories, isLoading, error } = useCategories(); // Hook'u burada kullanıyoruz
+
+    if (isLoading) {
+        return <div className="spinner-border d-flex align-items-center justify-content-center" role="status">
+            <span className="sr-only">Yükleniyor...</span>
+        </div>;
+    }
+
+    // Error durumunda hata mesajı göstermek
+    if (error) {
+        return <div>{error}</div>;
+    }
+
     return (
         <>
             <nav id="mobile-menu" className="fw-bold">

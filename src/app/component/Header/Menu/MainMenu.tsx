@@ -3,8 +3,11 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import MegaMenu from "./MegaMenu";
 import {MobileCategories} from "@/app/component/Header/MobileMenu/MobileCategories";
+import {MainMenuProps} from "@/types/category";
 
-const MainMenu = () => {
+
+const MainMenu: React.FC<MainMenuProps> = ({ categories }) => {
+
     const [isMegaMenuOpen, setMegaMenuOpen] = useState(false);
     const megaMenuRef = useRef(null); // Referans Mega Menü için
 
@@ -22,36 +25,21 @@ const MainMenu = () => {
         };
     }, []);
 
-    const categories = [
-        { title: "Asayiş", link: "/" },
-        { title: "Dünya", link: "/" },
-        { title: "Eğitim", link: "/" },
-        { title: "Ekonomi", link: "/" },
-        { title: "Gündem", link: "/" },
-        { title: "Sağlık", link: "/" },
-        { title: "Siyaset", link: "/" },
-        { title: "Spor", link: "/" },
-        { title: "Teknoloji", link: "/" },
-        { title: "Yaşam", link: "/" },
-        { title: "Magazin", link: "/" },
-        { title: "Kültür-Sanat", link: "/" },
-    ];
-
     return (
         <>
             <div className="main-menu navbar navbar-expand-lg d-none d-lg-block bg-white">
                 <div className="container">
                     {/* Ana Menü */}
                     <ul className="nav fw-semibold">
-                        {categories && categories.map((item, index) => (
+                        {categories && categories?.map((item, index) => (
                             <li className="nav-item" key={index}>
                                 <Link
                                     href="/"
                                     className="nav-link text-dark"
                                     target="_self"
-                                    title={item.title}
+                                    title={item.name}
                                 >
-                                    {item.title}
+                                    {item.name}
                                 </Link>
                             </li>
                         ))}
@@ -68,7 +56,7 @@ const MainMenu = () => {
                             >
                                 <i className="fa fa-bars fa-lg" />
                             </Link>
-                            {isMegaMenuOpen && <MegaMenu isOpen={isMegaMenuOpen} />}
+                            {isMegaMenuOpen && <MegaMenu categories={categories} isOpen={isMegaMenuOpen} />}
                         </li>
                     </ul>
                 </div>

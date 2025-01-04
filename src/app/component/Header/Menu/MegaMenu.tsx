@@ -1,8 +1,9 @@
 "use client"
 import React from "react";
 import Link from "next/link";
+import {MegaMenuProps} from "@/types/category";
 
-const MegaMenu = ({ isOpen }) => {
+const MegaMenu: React.FC<MegaMenuProps> = ({ categories ,isOpen }) => {
     const extraSections = [
         { title: "Yozgat Nöbetçi Eczaneler", icon: "fa-capsules" },
         { title: "Yozgat Hava Durumu", icon: "fa-cloud-sun" },
@@ -23,23 +24,6 @@ const MegaMenu = ({ isOpen }) => {
         { name: "WhatsApp İhbar Hattı", icon: "fa-whatsapp", color: "text-navy" },
     ];
 
-    const categories = [
-        { title: "Asayiş", link: "/" },
-        { title: "Dünya", link: "/" },
-        { title: "Eğitim", link: "/" },
-        { title: "Ekonomi", link: "/" },
-        { title: "Gündem", link: "/" },
-        { title: "Haber", link: "/" },
-        { title: "Haber Reklam", link: "/" },
-        { title: "İş İlanları", link: "/" },
-        { title: "Kültür-Sanat", link: "/" },
-        { title: "Magazin", link: "/" },
-        { title: "Sağlık", link: "/" },
-        { title: "Siyaset", link: "/" },
-        { title: "Spor", link: "/" },
-        { title: "Teknoloji", link: "/" },
-        { title: "Yaşam", link: "/" },
-    ];
 
     const footerLinks = [
         { title: "Künye / İletişim", icon: "fa-id-card" },
@@ -57,7 +41,7 @@ const MegaMenu = ({ isOpen }) => {
         <div className={`mega-menu dropdown-menu dropdown-menu-end text-capitalize shadow-lg border-0 rounded-0 mt-0 ${isOpen ? 'show' : ''}`} data-bs-popper="static">
             <div className="row g-3 small p-3">
                 {/* Extra Sections */}
-                <div className="col">
+                {/*<div className="col">
                     <div className="extra-sections bg-light p-3 border">
                         {extraSections && extraSections.map((item) => (
                             <Link
@@ -72,20 +56,20 @@ const MegaMenu = ({ isOpen }) => {
                             </Link>
                         ))}
                     </div>
-                </div>
+                </div>*/}
 
                 {/* Grouped Categories */}
                 {groupedCategories.map((group, index) => (
                     <div className="col" key={index}>
                         {group.map((item) => (
                             <Link
-                                key={item.title}
-                                href={item.link}
+                                key={item.name}
+                                href="/"
                                 className="d-block border-bottom pb-2 mb-2"
                                 target="_self"
-                                title={item.title}
+                                title={item.name}
                             >
-                                {item.title}
+                                {item.name}
                             </Link>
                         ))}
                     </div>
