@@ -8,8 +8,7 @@ import 'swiper/css/autoplay';
 import Image from "next/image";
 import Link from "next/link";
 
-export default function MainHeadlineSwiper({ headlines}) {
-    console.log(headlines)
+export default function MainHeadlineSwiper({ headlines }) {
     if (!headlines) {
         return <div className="spinner-border d-flex align-items-center justify-content-center" role="status">
             <span className="sr-only">Yükleniyor...</span>
@@ -19,7 +18,7 @@ export default function MainHeadlineSwiper({ headlines}) {
     if (!Array.isArray(headlines) || headlines.length === 0) {
         return <div>Henüz bir manşet yok.</div>;
     }
-
+    const apiUrl = process.env.NEXT_PUBLIC_URL
     return (
         <div className="swiper main-headline">
             <Swiper
@@ -51,7 +50,7 @@ export default function MainHeadlineSwiper({ headlines}) {
                                 >
                                     <Image
                                         className="img-fluid"
-                                        src={headline?.headlineable.image?.path ? `https://sub.bozok.tv/${headline?.headlineable?.image?.path}` : '/test/yozgat-20.jpg'}
+                                        src={headline?.headlineable.image?.path ? `${apiUrl}${headline?.headlineable?.image?.path}` : '/test/yozgat-20.jpg'}
 
                                         loading="lazy"
                                         width={860}
@@ -86,7 +85,7 @@ export default function MainHeadlineSwiper({ headlines}) {
                                 >
                                     <Image
                                         className="img-fluid"
-                                        src={headline?.headlineable?.image?.path ? `https://sub.bozok.tv/${headline?.headlineable.image?.path}` : '/test/yozgat-20.jpg'}
+                                        src={headline?.headlineable?.image?.path ? `${apiUrl}${headline?.headlineable.image?.path}` : '/test/yozgat-20.jpg'}
                                         loading="lazy"
                                         width={860}
                                         height={504}

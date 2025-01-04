@@ -29,8 +29,7 @@ export default function Home() {
             }
         };
         fetchHeadlines();
-    }, []);
-
+    }, []);    
     return (
         <>
             <main className="index">
