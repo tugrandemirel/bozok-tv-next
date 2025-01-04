@@ -51,8 +51,8 @@ export default function MainHeadlineSwiper({ headlines }) {
                                     <Image
                                         className="img-fluid"
                                         src={headline?.headlineable.image?.path ? `${apiUrl}${headline?.headlineable?.image?.path}` : '/test/yozgat-20.jpg'}
-
-                                        loading="lazy"
+                                        priority
+                                        // loading="lazy"
                                         width={860}
                                         height={504}
                                         alt={headline?.image?.path ?? 'Advertisement'}
@@ -84,9 +84,10 @@ export default function MainHeadlineSwiper({ headlines }) {
                                     target="_self"
                                 >
                                     <Image
+                                        priority
                                         className="img-fluid"
                                         src={headline?.headlineable?.image?.path ? `${apiUrl}${headline?.headlineable.image?.path}` : '/test/yozgat-20.jpg'}
-                                        loading="lazy"
+                                        // loading="lazy"
                                         width={860}
                                         height={504}
                                         alt={headline?.headlineable?.title ?? 'Newsletter'}
