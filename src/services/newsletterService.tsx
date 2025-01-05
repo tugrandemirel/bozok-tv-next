@@ -10,3 +10,13 @@ export const getLasMinuteNewsletters = async () => {
         throw error;
     }
 }
+
+export const getFeaturedNews = async () => {
+  try {
+      const response = await apiClient.get(API_URLS.FEATURED_NEWS)
+      return response.data.data
+  } catch (error) {
+      console.error('Error fetching featured news:', error);
+      throw error;
+  }
+}

@@ -8,10 +8,13 @@ import {PhotoGallery} from "@/app/component/Gallery/PhotoGallery";
 import {VideoGallery} from "@/app/component/Gallery/VideoGallery";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {useFeaturedNews, useLastMinuteNewsletters} from "@/hooks/useNewsletters";
 
 export default function Home() {
     const [headlines, setHeadlines] = useState([]);
     const [error, setError] = useState(null);
+    const { featuredNews, isLoading: featureLoading, error: featureError } = useFeaturedNews()
+    const { lastMinutes, isLoading: lastMinuteIsLoading, error: lastMinuteError } = useLastMinuteNewsletters();
 
     useEffect(() => {
         const fetchHeadlines = async () => {
@@ -50,7 +53,7 @@ export default function Home() {
                                     <h2 className="h5 mb-0 text-nowrap">Son Dakika</h2>
                                 </a>
                             </div>
-                            <LastMinuteSwiper/>
+                            <LastMinuteSwiper newsletters={lastMinutes}/>
 
                         </div>
                     </section>
@@ -58,14 +61,14 @@ export default function Home() {
                     <section className="main-headline-1 mb-3">
                         <div className="row g-2">
                             <div className="col-lg-8">
-                                <MainHeadlineSwiper headlines={headlines?.data}/>
+                                <MainHeadlineSwiper newsletters={headlines?.data}/>
                             </div>
                             <div
                                 className="col-12 d-lg-none"
                             />
                             <div className="col-lg-4">
                                 <div className="row g-2">
-                                    <FeaturedNews/>
+                                    <FeaturedNews newsletters={featuredNews}/>
                                 </div>
                             </div>
                         </div>

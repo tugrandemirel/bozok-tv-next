@@ -6,20 +6,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { useLastMinuteNewsletters } from "@/hooks/useNewsletters";
+import React from "react";
+import {LastMinuteSwiperProps} from "@/types/newsletter";
 
-export default function LastMinuteSwiper() {
-    const { lastMinutes, isLoading, error } = useLastMinuteNewsletters();
-
-    if (isLoading) {
-        return <div className="spinner-border d-flex align-items-center justify-content-center" role="status">
-            <span className="sr-only">Yükleniyor...</span>
-        </div>;
-    }
-
-    if (error) {
-        return <div>{error}</div>;
-    }
+const LastMinuteSwiper: React.FC<LastMinuteSwiperProps> = ({ newsletters }) => {
 
     return (
         <>
@@ -39,7 +29,7 @@ export default function LastMinuteSwiper() {
                         disableOnInteraction: false, // Kullanıcı kaydırdığında autoplay durmaz
                     }}
                 >
-                    {lastMinutes.map((lastMinute, index) => {
+                    {newsletters.map((lastMinute, index) => {
                         let formatted_date = moment(lastMinute.created_at).format("HH:mm");
                         return (
                             <SwiperSlide key={index}>
@@ -68,3 +58,5 @@ export default function LastMinuteSwiper() {
         </>
     );
 }
+
+export default LastMinuteSwiper

@@ -7,15 +7,17 @@ import 'swiper/css/autoplay';
 
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
+import {MainHeadlineSwiperProps} from "@/types/newsletter";
 
-export default function MainHeadlineSwiper({ headlines }) {
-    if (!headlines) {
+const MainHeadlineSwiper: React.FC<MainHeadlineSwiperProps> = ({ newsletters }) => {
+    if (!newsletters) {
         return <div className="spinner-border d-flex align-items-center justify-content-center" role="status">
             <span className="sr-only">Yükleniyor...</span>
         </div>;
     }
 
-    if (!Array.isArray(headlines) || headlines.length === 0) {
+    if (!Array.isArray(newsletters) || newsletters.length === 0) {
         return <div>Henüz bir manşet yok.</div>;
     }
     const apiUrl = process.env.NEXT_PUBLIC_URL
@@ -39,7 +41,7 @@ export default function MainHeadlineSwiper({ headlines }) {
                     disableOnInteraction: false,
                 }}
             >
-                {headlines.map((headline) => {
+                {newsletters.map((headline) => {
                     if (headline?.headlineable_type === "App\\Models\\Ads") {
                         return (
                             <SwiperSlide key={headline?.uuid}>
@@ -120,3 +122,4 @@ export default function MainHeadlineSwiper({ headlines }) {
         </div>
     );
 }
+export default MainHeadlineSwiper
