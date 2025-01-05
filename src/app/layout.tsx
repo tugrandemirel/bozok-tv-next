@@ -16,7 +16,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <Header />
             {children}
             <Footer />
-            <MobileMenu />
+            {/*<MobileMenu />*/}
             <Script async src="/assets/js/jquery.min.js" strategy="beforeInteractive" />
             <Script async src="/assets/js/moment.js" strategy="beforeInteractive" />
             <Script async src="/assets/js/menu.min.js" strategy="afterInteractive" />
