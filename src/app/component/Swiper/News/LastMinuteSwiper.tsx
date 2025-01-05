@@ -7,7 +7,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { useLastMinuteNewsletters } from "@/hooks/useNewsletters";
-// import moment from "moment"; // moment'i import etmelisiniz
 
 export default function LastMinuteSwiper() {
     const { lastMinutes, isLoading, error } = useLastMinuteNewsletters();
