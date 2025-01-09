@@ -2,19 +2,30 @@
 import LastMinuteSwiper from "@/app/component/Swiper/News/LastMinuteSwiper";
 import MainHeadlineSwiper from "@/app/component/Swiper/News/MainHeadlineSwiper";
 import {FeaturedNews} from "@/app/component/News/FeaturedNews/FeaturedNews";
+import {TabNews} from "@/app/component/News/TabNews/TabNews";
 import Link from "next/link";
 import AuthorsSwiper from "@/app/component/Swiper/AuthorSwiper";
 import {PhotoGallery} from "@/app/component/Gallery/PhotoGallery";
 import {VideoGallery} from "@/app/component/Gallery/VideoGallery";
-import {useEffect, useState} from "react";
+import { useEffect, useState} from "react";
 import axios from "axios";
 import {useFeaturedNews, useLastMinuteNewsletters} from "@/hooks/useNewsletters";
-
 export default function Home() {
     const [headlines, setHeadlines] = useState([]);
     const [error, setError] = useState(null);
     const { featuredNews, isLoading: featureLoading, error: featureError } = useFeaturedNews()
     const { lastMinutes, isLoading: lastMinuteIsLoading, error: lastMinuteError } = useLastMinuteNewsletters();
+
+    const [activeTab, setActiveTab] = useState<string>("gundem"); // Aktif tab durumu
+
+    const tabs = [
+        { id: 0, title: "Gündem", slug: "gundem" },
+        { id: 1, title: "Eğitim", slug: "egitim" },
+        { id: 2, title: "Sağlık", slug: "saglik" },
+        { id: 3, title: "Kültür-Sanat", slug: "kultur-sanat" },
+        { id: 4, title: "Magazin", slug: "magazin" },
+        { id: 5, title: "Dünya", slug: "dunya" },
+    ];
 
     useEffect(() => {
         const fetchHeadlines = async () => {
@@ -32,7 +43,8 @@ export default function Home() {
             }
         };
         fetchHeadlines();
-    }, []);    
+    }, []);
+
     return (
         <>
             <main className="index">
@@ -116,180 +128,24 @@ export default function Home() {
                                 className="nav nav-pills nav-justified mb-2 tabMenu1"
                                 id="pills-tab-news"
                             >
-                                <li className="nav-item" data-catid={41892}>
-                                    <a
-                                        className="nav-link text-uppercase   active "
-                                        id="pills-kategori-41892-tab"
-                                        data-bs-toggle="pill"
-                                        href="#pills-kategori-41892"
-                                        title="Gündem"
+                                {tabs.map((tab) => (
+                                    <li className={`nav-item ${activeTab === tab.slug ? "active" : ""}`}
+                                        key={tab.id}
+                                        onClick={() => setActiveTab(tab.slug)}
                                     >
-                                        Gündem
-                                    </a>
-                                </li>
-                                <li className="nav-item" data-catid={41895}>
-                                    <a
-                                        className="nav-link text-uppercase  "
-                                        id="pills-kategori-41895-tab"
-                                        data-bs-toggle="pill"
-                                        href="#pills-kategori-41895"
-                                        title="Eğitim"
-                                    >
-                                        Eğitim
-                                    </a>
-                                </li>
-                                <li className="nav-item" data-catid={41897}>
-                                    <a
-                                        className="nav-link text-uppercase  "
-                                        id="pills-kategori-41897-tab"
-                                        data-bs-toggle="pill"
-                                        href="#pills-kategori-41897"
-                                        title="Sağlık"
-                                    >
-                                        Sağlık
-                                    </a>
-                                </li>
-                                <li className="nav-item" data-catid={42051}>
-                                    <a
-                                        className="nav-link text-uppercase  "
-                                        id="pills-kategori-42051-tab"
-                                        data-bs-toggle="pill"
-                                        href="#pills-kategori-42051"
-                                        title="Kültür-Sanat"
-                                    >
-                                        Kültür-Sanat
-                                    </a>
-                                </li>
-                                <li className="nav-item" data-catid={41899}>
-                                    <a
-                                        className="nav-link text-uppercase  "
-                                        id="pills-kategori-41899-tab"
-                                        data-bs-toggle="pill"
-                                        href="#pills-kategori-41899"
-                                        title="Magazin"
-                                    >
-                                        Magazin
-                                    </a>
-                                </li>
-                                <li className="nav-item" data-catid={41889}>
-                                    <a
-                                        className="nav-link text-uppercase  "
-                                        id="pills-kategori-41889-tab"
-                                        data-bs-toggle="pill"
-                                        href="#pills-kategori-41889"
-                                        title="Dünya"
-                                    >
-                                        Dünya
-                                    </a>
-                                </li>
+                                        <Link
+                                            className={`nav-link text-uppercase ${activeTab === tab.slug ? "active" : ""}`}
+                                            href="javascript:void(0)"
+                                            title="Gündem"
+                                        >
+                                            {tab.title}
+                                        </Link>
+                                    </li>
+                                ))}
+
                             </ul>
                             <div className="tab-content" id="pills-news-tabContent">
-                                <div className="row g-3 result overflow-hidden" style={{ minHeight: 500 }}>
-                                    <div className="col-lg-6">
-                                        <a
-                                            href="/agir-tonaj-mercedeslere-sifa-dagitan-yozgatli-cekirdekten-yetisti-genc-yasta-marka-oldu"
-                                            title="Ağır tonaj Mercedeslere şifa dağıtan Yozgatlı! Çekirdekten yetişti genç yaşta marka oldu!"
-                                            target="_self"
-                                            className="top-mask position-relative d-block overflow-hidden"
-                                        >
-                                            <img
-                                                src="https://yozgatcamlikcom.teimg.com/crop/620x476/yozgatcamlik-com/uploads/2024/12/badem-mercedes-1.jpg"
-                                                width={620}
-                                                height={455}
-                                                loading="lazy"
-                                                className="img-fluid"
-                                                alt="Ağır tonaj Mercedeslere şifa dağıtan Yozgatlı! Çekirdekten yetişti genç yaşta marka oldu!"
-                                            />
-                                            <div className="title-bg-area">
-                                                <h3 className="text-white mb-0 mt-1">
-                                                    Ağır tonaj Mercedeslere şifa dağıtan Yozgatlı! Çekirdekten yetişti
-                                                    genç yaşta marka oldu!
-                                                </h3>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div className="col-lg-6">
-                                        <div className="row g-3">
-                                            <div className="col-6">
-                                                <a
-                                                    href="/ankaradaki-yozgat-arabasinda-bir-araya-geldi-gundem-memleket-meselesi"
-                                                    title="Ankara’daki Yozgat arabaşında bir araya geldi, gündem memleket meselesi!"
-                                                    target="_self"
-                                                >
-                                                    <img
-                                                        src="https://yozgatcamlikcom.teimg.com/crop/320x207/yozgatcamlik-com/uploads/2024/12/aankara.jpg"
-                                                        width={300}
-                                                        height={175}
-                                                        loading="lazy"
-                                                        className="img-fluid"
-                                                        alt="Ankara’daki Yozgat arabaşında bir araya geldi, gündem memleket meselesi!"
-                                                    />
-                                                    <h5 className="title-2-line mt-1 mb-0">
-                                                        Ankara’daki Yozgat arabaşında bir araya geldi, gündem memleket
-                                                        meselesi!
-                                                    </h5>
-                                                </a>
-                                            </div>
-                                            <div className="col-6">
-                                                <a
-                                                    href="/yozgatta-guvercinlere-esnaf-ve-vatandas-sahip-cikiyor"
-                                                    title="Yozgat'ta  Güvercinlere Esnaf ve Vatandaş Sahip Çıkıyor"
-                                                    target="_self"
-                                                >
-                                                    <img
-                                                        src="https://yozgatcamlikcom.teimg.com/crop/320x207/yozgatcamlik-com/uploads/2024/12/kus-3.jpg"
-                                                        width={300}
-                                                        height={175}
-                                                        loading="lazy"
-                                                        className="img-fluid"
-                                                        alt="Yozgat'ta  Güvercinlere Esnaf ve Vatandaş Sahip Çıkıyor"
-                                                    />
-                                                    <h5 className="title-2-line mt-1 mb-0">
-                                                        Yozgat'ta Güvercinlere Esnaf ve Vatandaş Sahip Çıkıyor
-                                                    </h5>
-                                                </a>
-                                            </div>
-                                            <div className="col-6">
-                                                <a
-                                                    href="/elmadagda-yasli-ve-engelli-vatandaslara-anlamli-ziyaret"
-                                                    title="Elmadağ'da Yaşlı ve Engelli Vatandaşlara Anlamlı Ziyaret"
-                                                    target="_self"
-                                                >
-                                                    <img
-                                                        src="https://yozgatcamlikcom.teimg.com/crop/320x207/yozgatcamlik-com/uploads/2024/12/elmedag-kaymakamligi-3.jpg"
-                                                        width={300}
-                                                        height={175}
-                                                        loading="lazy"
-                                                        className="img-fluid"
-                                                        alt="Elmadağ'da Yaşlı ve Engelli Vatandaşlara Anlamlı Ziyaret"
-                                                    />
-                                                    <h5 className="title-2-line mt-1 mb-0">
-                                                        Elmadağ'da Yaşlı ve Engelli Vatandaşlara Anlamlı Ziyaret
-                                                    </h5>
-                                                </a>
-                                            </div>
-                                            <div className="col-6">
-                                                <a
-                                                    href="/ankara-buyuksehir-belediyesi-200-cocuga-umut-oldu"
-                                                    title="Ankara Büyükşehir Belediyesi 200 Çocuğa Umut Oldu"
-                                                    target="_self"
-                                                >
-                                                    <img
-                                                        src="https://yozgatcamlikcom.teimg.com/crop/320x207/yozgatcamlik-com/uploads/2024/12/abb-200-cocuk.jpg"
-                                                        width={300}
-                                                        height={175}
-                                                        loading="lazy"
-                                                        className="img-fluid"
-                                                        alt="Ankara Büyükşehir Belediyesi 200 Çocuğa Umut Oldu"
-                                                    />
-                                                    <h5 className="title-2-line mt-1 mb-0">
-                                                        Ankara Büyükşehir Belediyesi 200 Çocuğa Umut Oldu
-                                                    </h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <TabNews slug={tabs.find((newsletter) => newsletter.slug === activeTab)?.slug}/>
                             </div>
 
                         </div>
