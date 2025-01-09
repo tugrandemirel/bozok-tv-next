@@ -19,8 +19,7 @@ export const TabNews = ({ slug}) => {
             <span className="sr-only">Yükleniyor...</span>
         </div></div>;
     }
-    const singleNewsletter = newsletters.slice(0, 1)
-    const otherNewsletters = newsletters.slice(1, 5)
+    const { singleNewsletter, otherNewsletters } = parseNewsletters(newsletters)
     const apiUrl = process.env.NEXT_PUBLIC_URL
     return (
         <>
@@ -74,3 +73,12 @@ export const TabNews = ({ slug}) => {
         </>
     );
 };
+ const parseNewsletters = (newsletters) => {
+
+     const singleNewsletter = newsletters.slice(0, 1)
+     const otherNewsletters = newsletters.slice(1, 5)
+     return {
+         singleNewsletter,
+         otherNewsletters
+     }
+ }
