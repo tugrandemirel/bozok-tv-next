@@ -23,13 +23,15 @@ const MainHeadlineSwiper: React.FC<MainHeadlineSwiperProps> = ({ newsletters }) 
     return (
         <div className="swiper main-headline">
             <Swiper
-                modules={[Navigation, Pagination, Autoplay]}
+                modules={[Pagination, Navigation, Autoplay]}
                 spaceBetween={50}
                 slidesPerView={1}
+                navigation={false}
                 pagination={{
                     el: ".main-headline-1 .swiper-pagination",
                     clickable: true,
                     renderBullet: (index, className) => {
+                        // Sayfa numarasını döndürmek için renderBullet kullanıyoruz
                         return `<span class="${className}">${index + 1}</span>`;
                     }
                 }}
@@ -107,7 +109,7 @@ const MainHeadlineSwiper: React.FC<MainHeadlineSwiperProps> = ({ newsletters }) 
                 })}
             </Swiper>
             <div className="d-flex justify-content-between">
-                <div className="swiper-pagination swiper-pagination-flex position-static w-100 bg-light-gray" />
+                <div className="swiper-pagination swiper-pagination-flex position-static w-100 bg-light-gray"></div>
                 <Link href={ROUTES.NEWS.LIST} className="sw-pagination-all" prefetch={false}>
                     T
                 </Link>

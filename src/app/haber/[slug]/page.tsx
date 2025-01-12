@@ -122,7 +122,7 @@ export default async function NewsletterDetail({ params }: Props) {
         '@type': 'NewsArticle',
         headline: newsletter.title,
         description: newsletter.spot,
-        image: image ? [apiUrl+'/'+image] : [],
+        image: image ? [apiUrl+image] : [],
         datePublished: newsletter.created_at,
         dateModified: newsletter.updated_at,
         author: {
@@ -167,7 +167,7 @@ export default async function NewsletterDetail({ params }: Props) {
             <NewsMetadata
                 title={newsletter.title || ''}
                 description={newsletter.spot || ''}
-                image={image ? apiUrl+'/'+image : ''}
+                image={image ? apiUrl+image : ''}
                 publishDate={newsletter.created_at || ''}
                 author={'Bozok TV'}
                 url={currentUrl}
@@ -218,16 +218,16 @@ export default async function NewsletterDetail({ params }: Props) {
                             <div className="col-lg-8">
                                 <div className="inner">
                                     <Link
-                                        href={apiUrl+'/'+image || '/'}
+                                        href={apiUrl+image || '/'}
                                         className="position-relative d-block"
                                         data-fancybox=""
                                     >
                                         <div className="zoom-in-out m-3">
                                             <i className="fa fa-expand" style={{ fontSize: 14 }} />
                                         </div>
-                                        <img
+                                        <Image
                                             className="img-fluid"
-                                            src={ apiUrl+'/'+image ?? '/test/default.jpg'}
+                                            src={ apiUrl+image ?? '/test/default.jpg'}
                                             alt={newsletter.title}
                                             width={860}
                                             height={504}
