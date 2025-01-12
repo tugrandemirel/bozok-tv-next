@@ -1,7 +1,7 @@
 "use client"
 import { useCategories } from "@/hooks/useCategories";
-import MainMenu from "@/app/component/Header/Menu/MainMenu";
 import Navbar from "./Menu/Navbar";
+import MainMenu from "@/app/components/layout/Header/Menu/MainMenu";
 
 export const Header = () => {
     const { categories, isLoading, error } = useCategories(); // Hook'u burada kullanıyoruz

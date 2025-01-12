@@ -1,10 +1,11 @@
+"use client"
 import Link from "next/link";
 import Image from "next/image";
 import React, {useEffect, useState} from "react";
 import apiClient from "@/utils/apiClient";
 import API_URLS from "@/constants/apiUrls";
 
-export const TabNews = ({ slug}) => {
+export const TabNews = ({ slug }) => {
     const [newsletters, setNewsletters] =  useState<any[]>([])
     useEffect(() => {
         const getNewsletters = async () => {
@@ -31,13 +32,13 @@ export const TabNews = ({ slug}) => {
                         target="_self"
                         className="top-mask position-relative d-block overflow-hidden"
                     >
-                        <img
+                        <Image
                             src={singleNewsletter[0]?.image ? `${apiUrl}${singleNewsletter[0]?.image?.path}` : '/test/yozgat-20.jpg'}
                             width={620}
                             height={455}
                             loading="lazy"
                             className="img-fluid"
-                            alt="Ağır tonaj Mercedeslere şifa dağıtan Yozgatlı! Çekirdekten yetişti genç yaşta marka oldu!"
+                            alt={singleNewsletter[0]?.title}
                         />
                         <div className="title-bg-area">
                             <h3 className="text-white mb-0 mt-1">{singleNewsletter[0]?.title}</h3>
@@ -49,21 +50,20 @@ export const TabNews = ({ slug}) => {
                         {otherNewsletters.map((newsletter, index) => {
                             return (
                                     <div className="col-6" key={index}>
-                                        <a
+                                        <Link
                                             href="/"
                                             title={newsletter?.title}
-                                            target="_self"
                                         >
-                                            <img
+                                            <Image
                                                 src={newsletter?.image ? `${apiUrl}${newsletter?.image?.path}` : '/test/yozgat-20.jpg'}
                                                 width={300}
                                                 height={175}
                                                 loading="lazy"
                                                 className="img-fluid"
-                                                alt="Ankara’daki Yozgat arabaşında bir araya geldi, gündem memleket meselesi!"
+                                                alt={newsletter?.title}
                                             />
                                             <h5 className="title-2-line mt-1 mb-0">{newsletter?.title}</h5>
-                                        </a>
+                                        </Link>
                                     </div>
                             )
                         })}
@@ -73,12 +73,12 @@ export const TabNews = ({ slug}) => {
         </>
     );
 };
- const parseNewsletters = (newsletters) => {
 
-     const singleNewsletter = newsletters.slice(0, 1)
-     const otherNewsletters = newsletters.slice(1, 5)
-     return {
-         singleNewsletter,
-         otherNewsletters
-     }
- }
+const parseNewsletters = (newsletters) => {
+    const singleNewsletter = newsletters.slice(0, 1)
+    const otherNewsletters = newsletters.slice(1, 5)
+    return {
+        singleNewsletter,
+        otherNewsletters
+    }
+}

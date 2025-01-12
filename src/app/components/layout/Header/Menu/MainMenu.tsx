@@ -2,8 +2,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import MegaMenu from "./MegaMenu";
-import {MobileCategories} from "@/app/component/Header/MobileMenu/MobileCategories";
 import {MainMenuProps} from "@/types/category";
+import {MobileCategories} from "@/app/components/layout/Header/MobileMenu/MobileCategories";
 
 
 const MainMenu: React.FC<MainMenuProps> = ({ categories }) => {

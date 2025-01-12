@@ -90,19 +90,19 @@ export const PhotoGallery = () => {
                                                 loading="lazy"
                                                 width={860}
                                                 height={504}
-                                                alt={item.imgAlt}
+                                                alt="Foto Galeri"
                                             />
                                         </Link>
                                     </div>
                                     <div className="col-8">
-                                        <a
+                                        <Link
                                             href={item.link}
                                             title={item.title}
                                         >
                                             <h4 className="h5 mt-1 m-0 title-2-line">
                                                 {item.title}
                                             </h4>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </React.Fragment>
                             ))}

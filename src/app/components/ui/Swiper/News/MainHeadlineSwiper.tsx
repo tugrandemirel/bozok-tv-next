@@ -1,38 +1,34 @@
+"use client";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import Image from "next/image";
+import Link from "next/link";
+import { MainHeadlineSwiperProps } from "@/types/newsletter";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/autoplay';
-
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import {MainHeadlineSwiperProps} from "@/types/newsletter";
 
 const MainHeadlineSwiper: React.FC<MainHeadlineSwiperProps> = ({ newsletters }) => {
-    if (!newsletters) {
-        return <div className="spinner-border d-flex align-items-center justify-content-center" role="status">
-            <span className="sr-only">Yükleniyor...</span>
-        </div>;
+    // API'den gelen veri yapısını kontrol et
+    const newsArray = Array.isArray(newsletters) ? newsletters : 
+                     newsletters?.data ? newsletters.data : [];
+
+    if (!newsArray || newsArray.length === 0) {
+        return <div>Manşet haberi bulunamadı</div>;
     }
 
-    if (!Array.isArray(newsletters) || newsletters.length === 0) {
-        return <div>Henüz bir manşet yok.</div>;
-    }
-    const apiUrl = process.env.NEXT_PUBLIC_URL
+    const apiUrl = process.env.NEXT_PUBLIC_URL;
+
     return (
         <div className="swiper main-headline">
             <Swiper
-                modules={[Pagination, Navigation, Autoplay]}
+                modules={[Navigation, Pagination, Autoplay]}
                 spaceBetween={50}
                 slidesPerView={1}
-                navigation={false}
                 pagination={{
                     el: ".main-headline-1 .swiper-pagination",
                     clickable: true,
                     renderBullet: (index, className) => {
-                        // Sayfa numarasını döndürmek için renderBullet kullanıyoruz
                         return `<span class="${className}">${index + 1}</span>`;
                     }
                 }}
@@ -41,69 +37,59 @@ const MainHeadlineSwiper: React.FC<MainHeadlineSwiperProps> = ({ newsletters }) 
                     disableOnInteraction: false,
                 }}
             >
-                {newsletters.map((headline) => {
+                {newsArray.map((headline) => {
                     if (headline?.headlineable_type === "App\\Models\\Ads") {
                         return (
                             <SwiperSlide key={headline?.uuid}>
                                 <Link
-                                    href={'#'}
+                                    href="#"
                                     className="bg-dark"
                                     target="_blank"
                                 >
                                     <Image
                                         className="img-fluid"
-                                        src={headline?.headlineable.image?.path ? `${apiUrl}${headline?.headlineable?.image?.path}` : '/test/yozgat-20.jpg'}
+                                        src={headline?.headlineable?.image?.path ? 
+                                            `${apiUrl}${headline?.headlineable?.image?.path}` : 
+                                            '/test/default.jpg'}
                                         priority
-                                        // loading="lazy"
                                         width={860}
                                         height={504}
-                                        alt={headline?.image?.path ?? 'Advertisement'}
-                                    /><div className="swiper-lazy-preloader swiper-lazy-preloader-white" />
+                                        alt="Advertisement"
+                                    />
                                     <div className="title-bg-area">
-                                        <span
-                                            className="mh-category"
-                                            style={{ backgroundColor: "#c00" }}
-                                        >
+                                        <span className="mh-category" style={{ backgroundColor: "#c00" }}>
                                             REKLAM
                                         </span>
-                                        <h3 className="text-white title-2-line mb-0 mt-1">
-
-                                        </h3>
                                     </div>
                                 </Link>
                             </SwiperSlide>
                         );
                     }
 
-                    // Eğer headline 'Newsletter' ise, tüm detayları göster
                     if (headline?.headlineable_type === "App\\Models\\Newsletter") {
                         return (
                             <SwiperSlide key={headline?.uuid}>
                                 <Link
-                                    href={`#`}
+                                    href={`/haber/${headline?.headlineable?.slug}`}
                                     className="bg-dark"
-                                    title={headline?.headlineable?.slug ?? 'Newsletter'}
-                                    target="_self"
+                                    title={headline?.headlineable?.title}
                                 >
                                     <Image
                                         priority
                                         className="img-fluid"
-                                        src={headline?.headlineable?.image?.path ? `${apiUrl}${headline?.headlineable.image?.path}` : '/test/yozgat-20.jpg'}
-                                        // loading="lazy"
+                                        src={headline?.headlineable?.image?.path ? 
+                                            `${apiUrl}${headline?.headlineable?.image?.path}` : 
+                                            '/test/default.jpg'}
                                         width={860}
                                         height={504}
-                                        alt={headline?.headlineable?.title ?? 'Newsletter'}
+                                        alt={headline?.headlineable?.title ?? "newsletter" }
                                     />
-                                    <div className="swiper-lazy-preloader swiper-lazy-preloader-white" />
                                     <div className="title-bg-area">
-                                        <span
-                                            className="mh-category"
-                                            style={{ backgroundColor: "#c00" }}
-                                        >
-                                            {headline?.headlineable?.category?.name ?? 'Category'}
+                                        <span className="mh-category">
+                                            {headline?.headlineable?.category?.[0]?.name}
                                         </span>
                                         <h3 className="text-white title-2-line mb-0 mt-1">
-                                            {headline?.headlineable?.title ?? 'Newsletter'}
+                                            {headline?.headlineable?.title}
                                         </h3>
                                     </div>
                                 </Link>
@@ -114,12 +100,13 @@ const MainHeadlineSwiper: React.FC<MainHeadlineSwiperProps> = ({ newsletters }) 
                 })}
             </Swiper>
             <div className="d-flex justify-content-between">
-                <div className="swiper-pagination swiper-pagination-flex position-static w-100 bg-light-gray"></div>
-                <a className="sw-pagination-all" href="">
+                <div className="swiper-pagination swiper-pagination-flex position-static w-100 bg-light-gray" />
+                <Link href="/tum-mansetler" className="sw-pagination-all">
                     T
-                </a>
+                </Link>
             </div>
         </div>
     );
-}
-export default MainHeadlineSwiper
+};
+
+export default MainHeadlineSwiper;

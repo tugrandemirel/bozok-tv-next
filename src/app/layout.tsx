@@ -1,22 +1,22 @@
-import Head from "next/head";
-import { Header } from "@/app/component/Header/Header";
-import { Footer } from "@/app/component/Footer/Footer";
 import "./globals.css";
-
 import "../../public/assets/css/app.css";
 import "../../public/assets/css/bootstrap.min.css";
-import {MobileMenu} from "@/app/component/Header/MobileMenu/MobileMenu";
 import Script from "next/script";
+import ReactQueryProvider from "@/providers/ReactQueryProvider";
+import {Header} from "@/app/components/layout/Header/Header";
+import {Footer} from "@/app/components/layout/Footer/Footer";
+import {ThirdPartyScripts} from "@/app/components/utils/ThirdPartyScripts";
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-
     return (
         <html lang="tr">
         <body className="d-flex flex-column min-vh-100">
-            <Header />
-            {children}
-            <Footer />
-            {/*<MobileMenu />*/}
+            <ReactQueryProvider>
+                <Header />
+                {children}
+                <Footer />
+            </ReactQueryProvider>
+            <ThirdPartyScripts />
             <Script async src="/assets/js/jquery.min.js" strategy="beforeInteractive" />
             <Script async src="/assets/js/moment.js" strategy="beforeInteractive" />
             <Script async src="/assets/js/menu.min.js" strategy="afterInteractive" />
