@@ -6,6 +6,7 @@ import Link from "next/link";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import ROUTES, { createAuthorPath } from "@/constants/routes";
 
 interface Author {
     id: number;
@@ -43,31 +44,36 @@ const AuthorsSwiper: React.FC<AuthorSwiperProps> = ({ authors }) => {
                         <div className="card border-0 text-center p-3">
                             <div className="d-flex align-items-center">
                                 <div className="flex-shrink-0 align-self-center">
-                                    <Link href={`/yazar/${author.slug}`} title={author.name}>
+                                    <Link href={createAuthorPath(author.slug)} title={author.name} prefetch={false}>
                                         <Image
                                             src={author.image || '/test/default-author.jpg'}
                                             width={100}
                                             height={100}
                                             alt={author.name}
                                             className="img-fluid rounded-circle border"
+                                            loading="lazy"
+                                            quality={75}
+                                            sizes="100px"
                                         />
                                     </Link>
                                 </div>
                                 <div className="flex-grow-1 ms-3 text-start">
                                     <Link
-                                        href={`/yazar/${author.slug}`}
+                                        href={createAuthorPath(author.slug)}
                                         title={author.name}
                                         className="author-name pb-1 mb-1 d-block"
+                                        prefetch={false}
                                     >
-                                        {author.name}
+                                        <span className="line-clamp-1">{author.name}</span>
                                     </Link>
                                     {author.latest_post && (
                                         <Link
-                                            href={`/yazar/${author.slug}/${author.latest_post.slug}`}
+                                            href={createAuthorPath(`${author.slug}/${author.latest_post.slug}`)}
                                             title={author.latest_post.title}
                                             className="h4 title-2-line"
+                                            prefetch={false}
                                         >
-                                            {author.latest_post.title}
+                                            <span className="line-clamp-2">{author.latest_post.title}</span>
                                         </Link>
                                     )}
                                 </div>

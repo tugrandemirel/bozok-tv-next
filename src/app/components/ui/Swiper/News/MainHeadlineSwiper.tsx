@@ -7,6 +7,7 @@ import { MainHeadlineSwiperProps } from "@/types/newsletter";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import ROUTES, { createNewsPath } from "@/constants/routes";
 
 const MainHeadlineSwiper: React.FC<MainHeadlineSwiperProps> = ({ newsletters }) => {
     // API'den gelen veri yapısını kontrol et
@@ -45,6 +46,7 @@ const MainHeadlineSwiper: React.FC<MainHeadlineSwiperProps> = ({ newsletters }) 
                                     href="#"
                                     className="bg-dark"
                                     target="_blank"
+                                    rel="nofollow"
                                 >
                                     <Image
                                         className="img-fluid"
@@ -54,7 +56,9 @@ const MainHeadlineSwiper: React.FC<MainHeadlineSwiperProps> = ({ newsletters }) 
                                         priority
                                         width={860}
                                         height={504}
-                                        alt="Advertisement"
+                                        alt="Reklam içeriği"
+                                        quality={85}
+                                        sizes="(max-width: 768px) 100vw, 860px"
                                     />
                                     <div className="title-bg-area">
                                         <span className="mh-category" style={{ backgroundColor: "#c00" }}>
@@ -70,9 +74,10 @@ const MainHeadlineSwiper: React.FC<MainHeadlineSwiperProps> = ({ newsletters }) 
                         return (
                             <SwiperSlide key={headline?.uuid}>
                                 <Link
-                                    href={`/haber/${headline?.headlineable?.slug}`}
+                                    href={createNewsPath(headline?.headlineable?.slug)}
                                     className="bg-dark"
                                     title={headline?.headlineable?.title}
+                                    prefetch={false}
                                 >
                                     <Image
                                         priority
@@ -82,13 +87,15 @@ const MainHeadlineSwiper: React.FC<MainHeadlineSwiperProps> = ({ newsletters }) 
                                             '/test/default.jpg'}
                                         width={860}
                                         height={504}
-                                        alt={headline?.headlineable?.title ?? "newsletter" }
+                                        alt={headline?.headlineable?.title ?? "Manşet haberi"}
+                                        quality={85}
+                                        sizes="(max-width: 768px) 100vw, 860px"
                                     />
                                     <div className="title-bg-area">
                                         <span className="mh-category">
                                             {headline?.headlineable?.category?.[0]?.name}
                                         </span>
-                                        <h3 className="text-white title-2-line mb-0 mt-1">
+                                        <h3 className="text-white title-2-line mb-0 mt-1 line-clamp-2">
                                             {headline?.headlineable?.title}
                                         </h3>
                                     </div>
@@ -101,7 +108,7 @@ const MainHeadlineSwiper: React.FC<MainHeadlineSwiperProps> = ({ newsletters }) 
             </Swiper>
             <div className="d-flex justify-content-between">
                 <div className="swiper-pagination swiper-pagination-flex position-static w-100 bg-light-gray" />
-                <Link href="/tum-mansetler" className="sw-pagination-all">
+                <Link href={ROUTES.NEWS.LIST} className="sw-pagination-all" prefetch={false}>
                     T
                 </Link>
             </div>
