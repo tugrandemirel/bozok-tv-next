@@ -40,7 +40,7 @@ const LastMinuteSwiper: React.FC<LastMinuteSwiperProps> = ({ newsletters }) => {
                                 prefetch={false}
                             >
                                 <span className="last-minute-time">
-                                    {(lastMinute.created_at)} |
+                                    {moment(lastMinute.created_at).format('HH:mm')} |
                                 </span>
                                 <strong className="line-clamp-1">{lastMinute.title}</strong>
                             </Link>

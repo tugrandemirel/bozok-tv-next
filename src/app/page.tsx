@@ -10,26 +10,37 @@ import AuthorsSwiper from "@/app/components/ui/Swiper/AuthorSwiper";
 import {TabNewsClient} from "@/app/components/ui/News/TabNews/TabNewsClient";
 import {PhotoGallery} from "@/app/components/ui/Gallery/PhotoGallery";
 import {VideoGallery} from "@/app/components/ui/Gallery/VideoGallery";
+import {TodayHeadlineNews} from "@/app/components/ui/News/TodayHeadlineNews/TodayHeadlineNews";
+import {getTodayHeadlineNews} from "@/services/newsletterService";
+import CategoryNews from "@/app/components/ui/News/CategoryNews/CategoryNews";
+import LastNews from "@/app/components/ui/News/LastNews/LastNews";
+
 
 async function getData() {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1/";
     
     try {
-        const [headlinesRes, lastMinutesRes, featuredNewsRes] = await Promise.all([
+        const [headlinesRes, lastMinutesRes, featuredNewsRes, todayHeadlineNewsRes, lastNewsRes] = await Promise.all([
             fetch(`${apiUrl}main-headline`, { cache: 'no-store' }),
             fetch(`${apiUrl}last-minutes`, { cache: 'no-store' }),
-            fetch(`${apiUrl}featured-news`, { cache: 'no-store' })
+            fetch(`${apiUrl}featured-news`, { cache: 'no-store' }),
+            fetch(`${apiUrl}today-headline-news`, { cache: 'no-store' }),
+            fetch(`${apiUrl}last-news`, { cache: 'no-store' }),
         ]);
 
         if (!headlinesRes.ok) throw new Error('Manşet haberleri yüklenemedi');
         if (!lastMinutesRes.ok) throw new Error('Son dakika haberleri yüklenemedi');
         if (!featuredNewsRes.ok) throw new Error('Öne çıkan haberler yüklenemedi');
+        if (!todayHeadlineNewsRes.ok) throw new Error('Günün manşeti haberleri yüklenemedi');
+        if (!lastNewsRes.ok) throw new Error('Günün manşeti haberleri yüklenemedi');
 
-        const [headlines, lastMinutes, featuredNews] = await Promise.all([
+        const [headlines, lastMinutes, featuredNews, todayHeadlineNews,lastNews] = await Promise.all([
             headlinesRes.json(),
             lastMinutesRes.json(),
-            featuredNewsRes.json()
-        ]) as [NewsletterResponse, NewsletterResponse, NewsletterResponse];
+            featuredNewsRes.json(),
+            todayHeadlineNewsRes.json(),
+            lastNewsRes.json(),
+        ]) as [NewsletterResponse, NewsletterResponse, NewsletterResponse, NewsletterResponse, NewsletterResponse];
 
         const fakeAuthors = [
             {
@@ -63,11 +74,12 @@ async function getData() {
                 }
             }
         ];
-
         return {
             headlines: headlines.data.data,
             lastMinutes: lastMinutes.data.data,
             featuredNews: featuredNews.data.data,
+            todayHeadlineNews: todayHeadlineNews.data.data,
+            lastNews: lastNews.data.data,
             authors: fakeAuthors
         };
     } catch (error) {
@@ -115,6 +127,8 @@ export default async function Home() {
     const lastMinutesSchema = generateNewsListSchema(data.lastMinutes);
     const headlinesSchema = generateNewsListSchema(data.headlines);
     const featuredNewsSchema = generateNewsListSchema(data.featuredNews);
+    const todayHeadlineNewsSchema = generateNewsListSchema(data.todayHeadlineNews);
+    const lastNewsSchema = generateNewsListSchema(data.lastNews);
 
     const tabs = [
         { id: 0, title: "Gündem", slug: "gundem" },
@@ -126,6 +140,10 @@ export default async function Home() {
         { id: 6, title: "Dünya", slug: "dunya" },
     ];
 
+    const categoryNewsletters = [
+        { id: 0, title: "Asayiş", slug: "asayis" },
+        { id: 1, title: "Spor", slug: "spor" },
+    ]
     return (
         <>
             {/* Schema.org yapıları */}
@@ -156,6 +174,18 @@ export default async function Home() {
                                         "position": 3,
                                         "name": "Öne Çıkan Haberler",
                                         "item": featuredNewsSchema
+                                    },
+                                    {
+                                        "@type": "ListItem",
+                                        "position": 4,
+                                        "name": "Günün Maşeti",
+                                        "item": todayHeadlineNewsSchema
+                                    },
+                                    {
+                                        "@type": "ListItem",
+                                        "position": 5,
+                                        "name": "Son Haberler",
+                                        "item": lastNewsSchema
                                     }
                                 ]
                             }
@@ -189,19 +219,27 @@ export default async function Home() {
 
                     {/* ANA MANŞET */}
                     <Suspense fallback={<div>Manşet haberleri yükleniyor...</div>}>
-                    <section className="main-headline-1 mb-3">
-                        <div className="row g-2">
-                            <div className="col-lg-8">
-                                    <MainHeadlineSwiper newsletters={data.headlines}/>
+                        <section className="top-headline-1 mb-3">
+                            <div className="row g-2">
+                                <div className="col-lg-8">
+                                        <MainHeadlineSwiper newsletters={data.headlines}/>
+                                </div>
+                                    <div className="col-12 d-lg-none"/>
+                                <div className="col-lg-4">
+                                    <div className="row g-2">
+                                            <FeaturedNews newsletters={data.featuredNews}/>
+                                        </div>
+                                </div>
                             </div>
-                                <div className="col-12 d-lg-none"/>
-                            <div className="col-lg-4">
-                                <div className="row g-2">
-                                        <FeaturedNews newsletters={data.featuredNews}/>
-                                    </div>
-                            </div>
-                        </div>
-                    </section>
+                        </section>
+                    </Suspense>
+
+                    <Suspense fallback={<div>Manşet haberleri yükleniyor...</div>}>
+                        <section
+                            className="top-headline-1 mb-3"
+                        >
+                            <TodayHeadlineNews newsletters={data.todayHeadlineNews} />
+                        </section>
                     </Suspense>
 
                     {/* YAZARLAR */}
@@ -230,7 +268,7 @@ export default async function Home() {
                                 >
                                     <div className="position-absolute top-0 end-0 me-3 mt-2">
                                         <Link
-                                                href="/yazarlar" 
+                                                href="/yazarlar"
                                             title="Tüm Yazarlar"
                                             className="text-te-color"
                                                 aria-label="Tüm yazarları görüntüle"
@@ -245,8 +283,8 @@ export default async function Home() {
                     </section>
                     </Suspense>
 
-                    {/* KATEGORİ HABERLERİ */}
-                    <Suspense fallback={<div>Kategori haberleri yükleniyor...</div>}>
+                    {/* TAB HABERLERİ */}
+                    <Suspense fallback={<div>TAB haberleri yükleniyor...</div>}>
                     <section className="tab-news">
                         <div className="bg-white mb-3 p-3 position-relative">
                                 <TabNewsClient tabs={tabs} initialSlug="gundem" />
@@ -263,6 +301,33 @@ export default async function Home() {
                         <VideoGallery />
                     </section>
                     </Suspense>
+                    <div className="row g-3">
+                        <div className="col-lg-8">
+                            {/* KATEGORİ HABERLER */}
+
+                                {categoryNewsletters.map((categoryNewsletter, index) => (
+                                    <section
+                                        className="category-block mb-3 p-3 bg-white" key={categoryNewsletter.id || index}
+                                    >
+                                    <div className="section-title d-flex mb-3 align-items-center" key={categoryNewsletter.id || index}>
+                                        <h2 className="lead flex-shrink-1 text-te-color m-0 fw-bold">
+                                            {categoryNewsletter?.title} Haberleri
+                                        </h2>
+                                        <div className="flex-grow-1 title-line mx-3" />
+                                    </div>
+                                        <div className="row g-3">
+                                            <CategoryNews slug={categoryNewsletter?.slug} />
+                                        </div>
+                                    </section>
+                                ))}
+
+                            {/* LATEST POSTS */}
+                            <section className="last-added-widget mb-3">
+                                <LastNews newsletters={data.lastNews} />
+                            </section>
+                        </div>
+                    </div>
+
                 </article>
             </main>
         </>
