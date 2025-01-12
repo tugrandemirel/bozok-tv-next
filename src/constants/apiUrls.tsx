@@ -5,7 +5,9 @@ const API_URLS = {
     CATEGORY_NEWSLETTERS:   "/category-newsletters", // Tab Menü için Kategori Bazlı Haber
     MAIN_HEADLINES:         '/main-headlines', // Ana manşetlere ait API URL'si
     NEWSLETTER:             '/newsletter', // Haberlere ait API URL'si
-    RELATED_NEWSLETTER:     "categories/{slug}/related-news", // Haber Detay sayfasında ilişkili haberler
+    RELATED_NEWSLETTER:     "/categories/{slug}/related-news", // Haber Detay sayfasında ilişkili haberler
+    TODAY_HEADLINE_NEWS:    "/today-headline-news", // Haber Detay sayfasında ilişkili haberler
+    LAST_NEWS:              "/last-news", // Son haberler
 };
 
 export default API_URLS;

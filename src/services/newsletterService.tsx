@@ -52,3 +52,33 @@ export const getRelatedNews = async (slug: string): Promise<Newsletter | null> =
         return null;
     }
 };
+
+export const getTodayHeadlineNews = async (): Promise<NewsletterResponse['data']['data'] | null> => {
+    try {
+        const response = await apiClient.get(API_URLS.TODAY_HEADLINE_NEWS);
+        return response.data.data.data;
+    } catch (error) {
+        console.error('Error fetching newsletter by slug:', error);
+        return null;
+    }
+};
+
+export const getCategoryNewsletters = async  (slug: string): Promise<NewsletterResponse['data']['data'] | null> => {
+    try {
+        const response = await apiClient.get(`${API_URLS.CATEGORY_NEWSLETTERS}/${slug}`);
+        return response.data.data.data;
+    } catch (error) {
+        console.error('Error fetching category newsletter by slug:', error);
+        return null;
+    }
+}
+
+export const getLastNewsletters = async  (): Promise<NewsletterResponse['data']['data'] | null> => {
+    try {
+        const response = await apiClient.get(API_URLS.LAST_NEWS);
+        return response.data.data.data;
+    } catch (error) {
+        console.error('Error fetching category newsletter by slug:', error);
+        return null;
+    }
+}

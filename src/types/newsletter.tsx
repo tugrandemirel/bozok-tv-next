@@ -63,3 +63,7 @@ export interface MainHeadlineSwiperProps extends BaseNewsletterProps {
 export interface FeaturedNewsProps extends BaseNewsletterProps {
     // Bu yapıya özel başka özellikler eklenebilir
 }
+
+export interface TodayHeadlineProps extends BaseNewsletterProps {
+    // Bu yapıya özel başka özellikler eklenebilir
+}

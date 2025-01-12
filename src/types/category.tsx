@@ -1,3 +1,5 @@
+import {Newsletter} from "@/types/newsletter";
+
 export interface Category {
     id: number;     // Kategori ID'si
     name: string;   // Kategori adı

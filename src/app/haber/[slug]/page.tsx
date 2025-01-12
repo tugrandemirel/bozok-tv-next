@@ -3,6 +3,8 @@ import {NewsMetadata} from "@/app/components/utils/NewsMetadata";
 import {Metadata} from "next";
 import Link from "next/link";
 import Image from "next/image";
+import moment from 'moment';
+import 'moment/locale/tr';
 
 interface Props {
     params: {
@@ -20,7 +22,6 @@ async function getData (slug: string) {
         if (newsletter?.category?.slug) {
             relatedNews = await getRelatedNews(newsletter.category.slug);
         }
-        console.log(relatedNews)
         return {
             newsletter,
             relatedNews,
@@ -98,6 +99,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function NewsletterDetail({ params }: Props) {
+    moment.locale('tr');
     const { newsletter, relatedNews } = await getData(params.slug);
 
     if (!newsletter) {
@@ -195,7 +197,7 @@ export default async function NewsletterDetail({ params }: Props) {
                         <div className="container d-flex justify-content-between align-items-center">
                             <div className="meta-author">
                                 <div className="box">
-                                    <time className="fw-bold">{newsletter.created_at}</time>
+                                    <time className="fw-bold">{moment(newsletter.created_at).locale('tr').format('D MMMM YYYY HH:mm')}</time>
                                     <span className="info">Yayınlanma</span>
                                 </div>
                                 {/*<div className="box">
