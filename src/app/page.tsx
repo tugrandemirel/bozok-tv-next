@@ -219,7 +219,7 @@ export default async function Home() {
 
                     {/* ANA MANŞET */}
                     <Suspense fallback={<div>Manşet haberleri yükleniyor...</div>}>
-                        <section className="top-headline-1 mb-3">
+                        <section className="main-headline-1 mb-3">
                             <div className="row g-2">
                                 <div className="col-lg-8">
                                         <MainHeadlineSwiper newsletters={data.headlines}/>
