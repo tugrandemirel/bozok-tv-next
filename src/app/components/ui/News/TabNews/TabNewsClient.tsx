@@ -20,23 +20,33 @@ export const TabNewsClient: React.FC<TabNewsClientProps> = ({ tabs, initialSlug 
             <ul
                 className="nav nav-pills nav-justified mb-2 tabMenu1"
                 id="pills-tab-news"
+                role="tablist"
             >
                 {tabs.map((tab) => (
-                    <li className={`nav-item ${activeTab === tab.slug ? "active" : ""}`}
+                    <li 
+                        className={`nav-item ${activeTab === tab.slug ? "active" : ""}`}
                         key={tab.id}
                         onClick={() => setActiveTab(tab.slug)}
+                        role="tab"
+                        aria-selected={activeTab === tab.slug}
+                        aria-controls={`tab-${tab.slug}`}
                     >
-                        <Link
+                        <button
                             className={`nav-link text-uppercase ${activeTab === tab.slug ? "active" : ""}`}
-                            href="javascript:void(0)"
+                            type="button"
                             title={tab.title}
                         >
                             {tab.title}
-                        </Link>
+                        </button>
                     </li>
                 ))}
             </ul>
-            <div className="tab-content" id="pills-news-tabContent">
+            <div 
+                className="tab-content" 
+                id="pills-news-tabContent"
+                role="tabpanel"
+                aria-labelledby={`tab-${activeTab}`}
+            >
                 <TabNews slug={tabs.find((tab) => tab.slug === activeTab)?.slug} />
             </div>
         </>

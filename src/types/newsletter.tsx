@@ -1,5 +1,6 @@
 import {Image} from "@/types/image";
 import {Category} from "@/types/category";
+import {NewsletterSource} from "@/types/newsletterSource";
 
 /**
  * Newsletter Interface: Temel bir newsletter yapısı.
@@ -10,13 +11,18 @@ export interface Newsletter {
     slug: string;
     spot?: string;
     content?: string;
-    category?: Category[];
+    category?: Category;
     image?: {
         path: string;
     };
     images?: Image[];
+    is_five_cuff: boolean;
+    is_main_headline: boolean;
+    source?: NewsletterSource[];
     publish_date?: string;
     created_at?: string;
+    updated_at?: string;
+    author?: string;
 }
 
 export interface ApiResponse<T> {
