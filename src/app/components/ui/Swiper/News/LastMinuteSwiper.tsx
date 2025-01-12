@@ -42,7 +42,7 @@ const LastMinuteSwiper: React.FC<LastMinuteSwiperProps> = ({ newsletters }) => {
                                 <span className="last-minute-time">
                                     {moment(lastMinute.created_at).format('HH:mm')} |
                                 </span>
-                                <strong className="line-clamp-1">{lastMinute.title}</strong>
+                                <strong className="line-clamp-1"> {lastMinute.title}</strong>
                             </Link>
                         </SwiperSlide>
                     ))}
