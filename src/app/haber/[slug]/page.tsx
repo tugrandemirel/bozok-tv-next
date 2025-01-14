@@ -46,13 +46,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const currentUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/haber/${params.slug}`;
     let image = newsletter.images?.find(image => image.image_type === "INSIDE")?.path || newsletter.images?.[0]?.path;
     return {
-        title: 'Bozok Tv - '+newsletter.title || '',
+        title: 'Bozok Tv - '+ newsletter.title || '',
         description: newsletter.spot || '',
         openGraph: {
             title: newsletter.title,
             description: newsletter.spot || '',
             images: image ? [{
-                url: apiUrl+'/'+image,
+                url: apiUrl+image,
                 width: 1200,
                 height: 630,
                 alt: newsletter.title
@@ -74,7 +74,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             card: 'summary_large_image',
             title: newsletter.title,
             description: newsletter.spot || '',
-            images: image ? [apiUrl+'/'+image] : [],
+            images: image ? [apiUrl+image] : [],
         },
         other: {
             'google-site-verification': process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,

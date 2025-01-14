@@ -9,7 +9,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import ROUTES, { createNewsPath } from "@/constants/routes";
 
-const MainHeadlineSwiper: React.FC<MainHeadlineSwiperProps> = ({ newsletters }) => {
+const MainHeadlineSwiper: React.FC<MainHeadlineSwiperProps> = ({ newsletters, allNewsLink = true }) => {
     // API'den gelen veri yapısını kontrol et
     const newsArray = Array.isArray(newsletters) ? newsletters : 
                      newsletters?.data ? newsletters.data : [];
@@ -40,10 +40,10 @@ const MainHeadlineSwiper: React.FC<MainHeadlineSwiperProps> = ({ newsletters }) 
                     disableOnInteraction: false,
                 }}
             >
-                {newsArray.map((headline) => {
+                {newsArray.map((headline, index) => {
                     if (headline?.headlineable_type === "App\\Models\\Ads") {
                         return (
-                            <SwiperSlide key={headline?.uuid}>
+                            <SwiperSlide key={headline?.uuid || index}>
                                 <Link
                                     href="#"
                                     className="bg-dark"
@@ -74,7 +74,7 @@ const MainHeadlineSwiper: React.FC<MainHeadlineSwiperProps> = ({ newsletters }) 
 
                     if (headline?.headlineable_type === "App\\Models\\Newsletter") {
                         return (
-                            <SwiperSlide key={headline?.uuid}>
+                            <SwiperSlide key={headline?.uuid || index}>
                                 <Link
                                     href={createNewsPath(headline?.headlineable?.slug)}
                                     className="bg-dark"
@@ -105,14 +105,52 @@ const MainHeadlineSwiper: React.FC<MainHeadlineSwiperProps> = ({ newsletters }) 
                             </SwiperSlide>
                         );
                     }
+
+                    if (!headline?.headlineable_type) {
+                        return (
+                            <SwiperSlide key={headline?.uuid || index}>
+                                <Link
+                                    href={createNewsPath(headline?.slug)}
+                                    className="bg-dark"
+                                    title={headline?.title}
+                                    prefetch={false}
+                                >
+                                    <Image
+                                        priority
+                                        className="img-fluid"
+                                        src={headline?.image?.path ?
+                                            `${apiUrl}${headline?.image?.path}` :
+                                            '/test/default.jpg'}
+                                        width={860}
+                                        height={504}
+                                        alt={headline?.title ?? "Manşet haberi"}
+                                        quality={85}
+                                        sizes="(max-width: 768px) 100vw, 860px"
+                                    />
+                                    <div className="title-bg-area">
+                                        <span className="mh-category">
+                                            {headline?.category?.name}
+                                        </span>
+                                        <h3 className="text-white title-2-line mb-0 mt-1 line-clamp-2">
+                                            {headline?.title}
+                                        </h3>
+                                    </div>
+                                </Link>
+                            </SwiperSlide>
+                        );
+                    }
+
                     return null;
                 })}
             </Swiper>
             <div className="d-flex justify-content-between">
-                <div className="swiper-pagination swiper-pagination-flex position-static w-100 bg-light-gray"></div>
-                <Link href={ROUTES.NEWS.LIST} className="sw-pagination-all" prefetch={false}>
-                    T
-                </Link>
+                <div className="swiper-pagination swiper-pagination-flex position-static w-100 bg-light-gray" ></div>
+                { allNewsLink === true && (
+                    <Link href={ROUTES.NEWS.LIST} className="sw-pagination-all" prefetch={false}>
+                        T
+                    </Link>
+                )}
+
             </div>
         </div>
     );

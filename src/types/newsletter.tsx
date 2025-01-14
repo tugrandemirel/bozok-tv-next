@@ -55,6 +55,7 @@ export interface LastMinuteSwiperProps extends BaseNewsletterProps {
  */
 export interface MainHeadlineSwiperProps extends BaseNewsletterProps {
     // Bu yapıya özel başka özellikler eklenebilir
+    allNewsLink: boolean,
 }
 
 /**

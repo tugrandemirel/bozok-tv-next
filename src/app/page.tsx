@@ -89,7 +89,7 @@ async function getData() {
 }
 
 export const metadata: Metadata = {
-    title: 'Bozok TV -Yozgat Haberleri',
+    title: 'Bozok TV - Yozgat Haberleri',
     description: 'Yozgat\'ın güncel haberleri, son dakika gelişmeleri, siyaset, ekonomi, spor ve daha fazlası Bozok TV\'de',
     keywords: 'yozgat haberleri, son dakika, güncel haberler',
     openGraph: {
