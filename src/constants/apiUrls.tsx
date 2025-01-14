@@ -8,6 +8,7 @@ const API_URLS = {
     RELATED_NEWSLETTER:     "/categories/{slug}/related-news", // Haber Detay sayfasında ilişkili haberler
     TODAY_HEADLINE_NEWS:    "/today-headline-news", // Haber Detay sayfasında ilişkili haberler
     LAST_NEWS:              "/last-news", // Son haberler
+    CATEGORY_BY_SLUG_NEWSLETTERS: "/category", // category/gundem = slug (kategori bazlı haberler)  
 };
 
 export default API_URLS;
