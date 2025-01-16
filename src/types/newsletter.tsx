@@ -67,3 +67,7 @@ export interface FeaturedNewsProps extends BaseNewsletterProps {
 export interface TodayHeadlineProps extends BaseNewsletterProps {
     // Bu yapıya özel başka özellikler eklenebilir
 }
+
+export interface SpecialNewsProps extends BaseNewsletterProps {
+
+}

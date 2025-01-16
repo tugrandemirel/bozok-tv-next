@@ -82,3 +82,16 @@ export const getLastNewsletters = async  (): Promise<NewsletterResponse['data'][
         return null;
     }
 }
+
+
+export const getCategoryThirdNewsletters = async  (slug: string): Promise<NewsletterResponse['data']['data'] | null> => {
+    try {
+        const url = API_URLS.CATEGORY_THIRD_NEWSLETTER.replace("{slug}", slug)
+        const response = await apiClient.get(url);
+        return response.data.data.data;
+    } catch (error) {
+        console.error('Error fetching category newsletter by slug:', error);
+        return null;
+    }
+}
+
