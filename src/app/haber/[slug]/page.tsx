@@ -1,10 +1,11 @@
-import {getNewsletterBySlug, getRelatedNews} from "@/services/newsletterService";
+import {getCategoryThirdNewsletters, getNewsletterBySlug, getRelatedNews} from "@/services/newsletterService";
 import {NewsMetadata} from "@/app/components/utils/NewsMetadata";
 import {Metadata} from "next";
 import Link from "next/link";
 import Image from "next/image";
 import moment from 'moment';
 import 'moment/locale/tr';
+import {SpecialNews} from "@/app/components/ui/News/SpecialNews/SpecialNews";
 
 interface Props {
     params: {
@@ -17,6 +18,8 @@ const apiUrl = process.env.NEXT_PUBLIC_URL;
 async function getData (slug: string) {
     try {
         const newsletter = await getNewsletterBySlug(slug);
+        const thirdNewsletters = await getCategoryThirdNewsletters("ozel-haber");
+
 
         let relatedNews = [];
         if (newsletter?.category?.slug) {
@@ -25,6 +28,7 @@ async function getData (slug: string) {
         return {
             newsletter,
             relatedNews,
+            thirdNewsletters,
         };
 
     } catch (error) {
@@ -34,7 +38,7 @@ async function getData (slug: string) {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const { newsletter, relatedNews } = await getData(params.slug);
+    const { newsletter, relatedNews, thirdNewsletters } = await getData(params.slug);
 
     if (!newsletter) {
         return {
@@ -74,7 +78,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             card: 'summary_large_image',
             title: newsletter.title,
             description: newsletter.spot || '',
-            images: image ? [apiUrl+'/'+image] : [],
+            images: image ? [apiUrl + image] : [],
         },
         other: {
             'google-site-verification': process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
@@ -100,7 +104,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function NewsletterDetail({ params }: Props) {
     moment.locale('tr');
-    const { newsletter, relatedNews } = await getData(params.slug);
+    const { newsletter, relatedNews , thirdNewsletters} = await getData(params.slug);
 
     if (!newsletter) {
         return (
@@ -220,7 +224,7 @@ export default async function NewsletterDetail({ params }: Props) {
                                     <Link
                                         href={apiUrl+image || '/'}
                                         className="position-relative d-block"
-                                        data-fancybox=""
+                                        data-fancybox="gallery"
                                     >
                                         <div className="zoom-in-out m-3">
                                             <i className="fa fa-expand" style={{ fontSize: 14 }} />
@@ -279,6 +283,11 @@ export default async function NewsletterDetail({ params }: Props) {
                                     ))}
                                     </div>
                                 </div>
+                            </div>
+                            <div className="col-lg-4">
+                                <section className="category-block special-news-block mb-3 p-3 bg-white">
+                                    <SpecialNews newsletters={thirdNewsletters}/>
+                                </section>
                             </div>
                         </div>
                     </div>
