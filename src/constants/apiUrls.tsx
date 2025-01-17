@@ -7,7 +7,9 @@ const API_URLS = {
     NEWSLETTER:             '/newsletter', // Haberlere ait API URL'si
     RELATED_NEWSLETTER:     "/categories/{slug}/related-news", // Haber Detay sayfasında ilişkili haberler
     TODAY_HEADLINE_NEWS:    "/today-headline-news", // Haber Detay sayfasında ilişkili haberler
-    LAST_NEWS:              "/last-news", // Son haberler
+    LAST_NEWS:              "/last-news", // Son haberler,
+    CATEGORY_THIRD_NEWSLETTER: "get-category-single-newsletter/{slug}", // Kateogriye ait 3 adet haber
+
     CATEGORY_BY_SLUG_NEWSLETTERS: "/category", // category/gundem = slug (kategori bazlı haberler)  
 };
 
